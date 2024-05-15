@@ -1,0 +1,192 @@
+{
+    "header": {
+        "title": "Projeto Job", 
+        "menuLink1": "Vagas",
+        "menuLink2": "Área da Empresa", "menuLink3": "Perfil do Candidato","menuLink4": "Guia de Carreira",
+        "menuLink5": "Anuncie Aqui",
+        "menuLink6": "Notícias",
+        "companyButton": "Login Empresa",
+        "candidateButton": "Login Candidato"
+    },
+
+    "home": {
+        "applyButton": "Aplicar"
+    },
+
+    "companyButtons": {
+        "button1": "Perfil da Empresa",
+        "button2": "Criar uma Vaga",
+        "button3": "Meus Anúncios",
+        "button4": "Outro Botão"
+    },
+
+    "companyProfile": {
+        "logoutButton": "Sair do Perfil",
+        "createAdTitle": "Criar Vaga",
+        "label1": "Título do Anúncio",
+        "label2": "Nome da Empresa",
+        "label3": "Ramo de Atividade",
+        "label4": "Localidade",
+        "label5": "Descrição Curta",
+        "label6": "Tipo de Trabalho",
+        "label7": "Carga Horária",
+        "label8": "Responsabilidades",
+        "label9": "Perfil Buscado",
+        "label10": "Horário",
+        "label11": "Salário Ofertado",
+        "publishButton": "Publicar Vaga",
+
+        "branch1": "Selecione uma categoria",
+        "branch2": "Administrativo e Secretariado",
+        "branch3": "Agricultura e Jardinagem",
+        "branch4": "Assistente de Loja e Caixa",
+        "branch5": "Call Center e Telemarketing",
+        "branch6": "Cargos Executivos",
+        "branch7": "Comércio e Vendas",
+        "branch8": "Construção Civil",
+        "branch9": "Contabilidade e Finanças",
+        "branch10": "Desportos e Fitness",
+        "branch11": "Domésticos e Limpeza",
+        "branch12": "Formação e Educação",
+        "branch13": "Industrial, Fabrico e Confecção",
+        "branch14": "IT e Telecomunicações",
+        "branch15": "Marketing, Publicidade e Eventos",
+        "branch16": "Restauração",
+        "branch17": "Segurança e Vigilância",
+        "branch18": "Serviço Social e Voluntariado",
+        "branch19": "Saúde e Beleza",
+        "branch20": "Turismo e Hotelaria",
+        "branch21": "Outros",
+
+        "chooseLocation": "Escolha a localidade",
+        "location1": "Albufeira",
+        "location2": "Almada",
+        "location3": "Aveiro",
+        "location4": "Braga",
+        "location5": "Coimbra",
+        "location6": "Évora",
+        "location7": "Faro",
+        "location8": "Guimarães",
+        "location9": "Lisboa",
+        "location10": "Porto",
+
+        "charactersRemaining": "Caracteres restantes",
+
+        "workPlace1": "Presencial",
+        "workPlace2": "Híbrido",
+        "workPlace3": "Remoto",
+
+        "workLoad3": "Estágio",
+
+        "chooseSalary": "Defina o salário",
+        "salary1": "Entre 200€ e 500€",
+        "salary2": "Entre 500€ e 850€",
+        "salary3": "Entre 850€ e 1000€",
+        "salary4": "Entre 1000€ e 1200€",
+        "salary5": "Entre 1200€ e 1500€",
+        "salary6": "Entre 1500€ e 1800€",
+        "salary7": "Entre 1800€ e 2100€",
+        "salary8": "Acima de 2100€",
+        "salary9": "Trabalho Voluntário",
+
+        "placeholder1": "Digite o título do anúncio",
+        "placeholder2": "Digite o nome da empresa",
+        "placeholder3": "Escreva uma descrição curta, falando de forma breve do que se trata a vaga. Isso aparecerá no anúncio da página principal.",
+        "placeholder4": "Descreva a vaga que estás a oferecer e as respectivas responsabilidades. Busque clareza e riqueza em detalhes, para que não hajam dúvidas ao candidato.",
+        "placeholder5": " Descreva o tipo de candidato que estás em busca, levando em consideração a escolaridade, gênero, morada, etc.",
+        "placeholder6": "Defina a carga horária que o candidato deverá cumprir."
+    },
+
+    "candidateButtons": {
+        "button1": "Meu Perfil",
+        "button2": "Editar Perfil",
+        "button3": "Outro Botão"
+    },
+
+    "candidateProfile": {
+        "welcome": "Seja Bem-vindo,",
+        "logoutButton": "Sair do Perfil",
+        "editProfileTitle": "Editar Perfil",
+        "placeholder1": "Atualizar foto de perfil",
+        "placeholder2": "Atualizar CV",
+        "label1": "Confirmas a nova foto?",
+        "alert1": "Foto enviada com sucesso!",
+        "years": "anos"
+    },
+
+    "myAds": {
+        "title": "Vagas da Sua Empresa",
+        "location": "Localidade",
+        "branchActivity": "Ramo de Atividade",
+        "description": "Descrição",
+        "workLoad": "Horário",
+        "typeWork": "Tipo de Trabalho",
+        "deleteButton": "Deletar",
+        "confirmationDialog": "Realmente desejas deletar esta vaga?",
+        "confirmButton": "Sim",
+        "cancelButton": "Não"
+    },
+
+    "alerts": {
+        "adPostSuccessfully": "A vaga foi criada com sucesso!"
+    },
+
+    "profileLogin": {
+        "titleCompany": "Crie vagas de emprego para vossa empresa:",
+        "titleCandidate": "Junta-te a nós e aproveite cada funcionalidade:",
+        "placeholder1": "Digite vosso email",
+        "placeholder2": "Insira vossa palavra passe",
+        "submitButton": "Entrar",
+        "createAccount": "Não tem cadastro? Crie a sua conta aqui.",
+        "forgetPassword": "Esqueceste-te a palavra passe?"
+    },
+
+    "createCompany": {
+        "title": "Cadastre vossa empresa!",
+        "placeholder1": "Digite o nome da empresa",
+        "placeholder2": "Digite o email da empresa",
+        "placeholder3": "Escreva aqui informações relevantes sobre a vossa empresa, como uma breve descrição",
+        "placeholder4": "Crie uma senha com letras e números",
+        "submitButton":"Criar Perfil da Empresa"
+    },
+
+    "createCandidate": {
+        "title": "Seja bem-vindo ao Projeto Job!",
+        "placeholder1": "Insira o vosso nome completo",
+        "placeholder2": "Insira o vosso melhor email",
+        "placeholder3": "Em que ano nasceste?",
+        "placeholder4": "Em que cidade vives?",
+        "placeholder5": "Qual a vossa profissão?",
+        "placeholder6": "Crie uma senha usando letras e números",
+        "submitButton":"Criar Perfil do Candidato",
+
+        "label1": "Não qualificado",
+        "label2": "Qualificado",
+        "label3": "Estudante",
+        "label4": "Mestrado",
+        "label5": "Licenciatura"
+    },
+
+    "changePassword": {
+        "companyTitle": "Alterar Palavra Passe da Empresa",
+        "candidateTitle": "Alterar Palavra Passe do Candidato",
+        "placeholder1": "Insira o email cadastrado",
+        "placeholder2": "Insira a nova palavra passe",
+        "submitButton":"Validar email",
+        "updateButton": "Atualizar Palavra Passe",
+        "cancelButton": "Cancelar",
+        "alert1": "Não há registro em nosso banco de dados com este email.",
+        "alert2": "Palavra passe alterada com sucesso!"
+    },
+
+    "filters": {
+        "placeholder1": "Qual a vaga?",
+        "placeholder2": "Em qual cidade?",
+        "option1": "Mais Recentes",
+        "option2": "Últimas 24h",
+        "option3": "Última Semana",
+        "option4": "Mais Antigos",
+        "submitButton": "Buscar Vagas",
+        "filterButton": "Filtros"
+    }
+}

@@ -1,0 +1,60 @@
+#jobDetails {
+    text-align: left;
+    padding: 15px;
+}
+
+#jobDetailsHeader {
+    border: 1px solid black;
+    margin: 25px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+}
+
+#jobDetailsHeader .material-symbols-outlined {
+    font-size: 1em;
+}
+
+
+#jobDetails > a .material-symbols-outlined {
+    font-size: 0.8em;
+    font-weight: lighter;
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jobDescription {
+    width: 250px;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+#detailsComplement {
+    margin: 25px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 15px;
+    font-size: 1em;
+}
+
+#detailsComplement h4 {
+    margin-bottom: 10px;
+}
+
+#detailsComplement p {
+    margin: 0px;
+}

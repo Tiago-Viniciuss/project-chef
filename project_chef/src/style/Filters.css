@@ -1,0 +1,69 @@
+#searchJob {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 75px 10px 25px 10px;
+    margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#showFiltersButton {
+    font-size: .6em;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+#showFilters {
+    display: flex;
+    height: 0px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: top;
+    text-align: left;
+    visibility: hidden;
+    transition: 1s;
+    overflow-y: hidden;
+}
+
+#showFilters.showFilters {
+    visibility: visible;
+    height: 450px;
+    padding: 15px;
+}
+
+#searchOptions {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+#searchOptions input::placeholder {
+    font-size: .7em;
+}
+
+#searchJob fieldset {
+    width: 130px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: .6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+#searchJob legend {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 5px 0px;
+}
+
+#searchJobButton {
+    width: 98%;
+    cursor: pointer;
+}

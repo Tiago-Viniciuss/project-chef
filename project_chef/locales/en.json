@@ -1,0 +1,198 @@
+{   "header": {
+        "title": "Projeto Job", 
+        "menuLink1": "Jobs",
+        "menuLink2": "Company Area",
+        "menuLink3": "Candidate Profile",
+        "menuLink4": "Career Guide",
+        "menuLink5": "Advertise Here",
+        "menuLink6": "News",
+        "companyButton": "Company Login",
+        "candidateButton": "Candidate Login"
+    },
+
+    "home": {
+        "applyButton": "Apply"
+    },
+
+    "companyButtons": {
+        "button1": "Company Profile",
+        "button2": "Create Ad",
+        "button3": "My Ads",
+        "button4": "Another Button"
+    },
+
+    "companyProfile": {
+        "logoutButton": "Logout",
+        "createAdTitle": "Create Advertisement",
+        "label1": "Advertisement Title",
+        "label2": "Company Name",
+        "label3": "Branch of Activity",
+        "label4": "Location",
+        "label5": "Short Description",
+        "label6": "Type of Work",
+        "label7": "Workload",
+        "label8": "Responsabilities",
+        "label9": "Target Profile",
+        "label10": "Working Hours",
+        "label11": "Salary Offered",
+        "publishButton": "Publish Ad",
+
+        "branch1": "Select a category",
+        "branch2": "Administrative and Secretarial",
+        "branch3": "Agriculture and Gardening",
+        "branch4": "Store Assistant and Cashier",
+        "branch5": "Call Center and Telemarketing",
+        "branch6": "Executive Positions",
+        "branch7": "Commerce and Sales",
+        "branch8": "Civil Construction",
+        "branch9": "Accounting and Finance",
+        "branch10": "Sports and Fitness",
+        "branch11": "Domestic and Cleaning",
+        "branch12": "Training and Education",
+        "branch13": "Industrial, Manufacturing, and Clothing",
+        "branch14": "IT and Telecommunications",
+        "branch15": "Marketing, Advertising, and Events",
+        "branch16": "Restaurant Branch",
+        "branch17": "Security and Surveillance",
+        "branch18": "Social Service and Volunteering",
+        "branch19": "Health and Beauty",
+        "branch20": "Tourism and Hospitality",
+        "branch21": "Others",
+
+        "chooseLocation": "Choose the location",
+        "location1": "Albufeira",
+        "location2": "Almada",
+        "location3": "Aveiro",
+        "location4": "Braga",
+        "location5": "Coimbra",
+        "location6": "Évora",
+        "location7": "Faro",
+        "location8": "Guimarães",
+        "location9": "Lisboa",
+        "location10": "Porto",
+        
+
+        "charactersRemaining": "Characters Remaining",
+
+        "workPlace1": "On-Site",
+        "workPlace2": "Hybrid",
+        "workPlace3": "Remote",
+
+        "workLoad3": "Internship",
+
+        "chooseSalary": "Set the salary",
+        "salary1": "Between €200 and €500",
+        "salary2": "Between €500 and €850",
+        "salary3": "Between €850 and €1000",
+        "salary4": "Between €1000 and €1200",
+        "salary5": "Between €1200 and €1500",
+        "salary6": "Between €1500 and €1800",
+        "salary7": "Between €1800 and €2100",
+        "salary8": "Above €2100",
+        "salary9": "Voluntary Work",
+
+        "placeholder1": "Enter the job title",
+        "placeholder2": "Enter the company name",
+        "placeholder3": "Write a brief description of the job, summarizing what the position is about. This will appear on the main page ad.",
+        "placeholder4": "Describe the job you are offering and its responsibilities in detail. Aim for clarity and richness in details so that there are no doubts to the candidate.",
+        "placeholder5": " Describe the type of candidate you are looking for, taking into consideration education, gender, location, etc.",
+        "placeholder6": "Define the work hours the candidate will be required to fulfill."
+
+
+    },
+
+    "candidateButtons": {
+        "button1": "My Profile",
+        "button2": "Edit Profile",
+        "button3": "Another Button"
+    },
+
+    "candidateProfile": {
+        "welcome": "Welcome,",
+        "logoutButton": "Logout",
+        "editProfileTitle": "Edit Profile",
+        "placeholder1": "Update profile picture",
+        "placeholder2": "Update CV",
+        "label1": "Do you confirm the new picture?",
+        "alert1": "Picture successfully sent!",
+        "alert2": "CV successfully sent!",
+        "years": "years"
+    },
+
+    "myAds": {
+        "title": "Your Company's Ads",
+        "location": "Location",
+        "branchActivity": "Branch of Activity",
+        "description": "Description",
+        "workLoad": "Work Hours",
+        "typeWork": "Type of Work",
+        "deleteButton": "Delete",
+        "confirmationDialog": "Do you really want to delete this ad?",
+        "confirmButton": "Yes",
+        "cancelButton": "No"
+    },
+
+    "alerts": {
+        "adPostSuccessfully": "The advertisement was successfully created!"
+    },
+
+    "profileLogin": {
+        "titleCompany": "Create job ads for your company:",
+        "titleCandidate": "Join us and enjoy every feature:",
+        "placeholder1": "Enter your email",
+        "placeholder2": "Insert your password",
+        "submitButton": "Login",
+        "createAccount": "Don't have a registration? Create your account here.",
+        "forgetPassword": "Have you forgotten your password?"
+    },
+
+    "createCompany": {
+        "title": "Register your company!",
+        "placeholder1": "Insert the company's name",
+        "placeholder2": "Insert the company's email",
+        "placeholder3": "Write relevant information about your company here, such as a brief description",
+        "placeholder4": "Create a password using letters and numbers",
+        "submitButton":"Create Company Profile"
+    },
+
+    "createCandidate": {
+        "title": "Welcome to the Projeto Job!",
+        "placeholder1": "Insert your complete name",
+        "placeholder2": "Insert your best email",
+        "placeholder3": "What year were you born?",
+        "placeholder4": "Where do you live?",
+        "placeholder5": "What is your profession?",
+        "placeholder6": "Create a password using letters and numbers",
+        "submitButton":"Create Candidate Profile",
+
+        "label1": "Unqualified",
+        "label2": "Qualified",
+        "label3": "Student",
+        "label4": "Master",
+        "label5": "Degree"
+    },
+    
+    "changePassword": {
+        "companyTitle": "Change The Company Password",
+        "candidateTitle": "Change The Candidate Password",
+        "placeholder1": "Insert the registered email",
+        "placeholder2": "Insert the new password",
+        "submitButton":"Validate email",
+        "updateButton": "Update Password",
+        "cancelButton": "Cancel",
+        "alert1": "There is no record in our database with this email.",
+        "alert2": "Password successfully updated!"
+    },
+
+    "filters": {
+        "placeholder1": "What's the job?",
+        "placeholder2": "Where?",
+        "option1": "Newest Jobs",
+        "option2": "Last 24h",
+        "option3": "Last Week",
+        "option4": "Oldest Jobs",
+        "submitButton": "Search Jobs",
+        "filterButton": "Filters"
+    }
+
+}

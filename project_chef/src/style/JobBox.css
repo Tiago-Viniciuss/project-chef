@@ -1,0 +1,111 @@
+/*
+    JOB BOX ----------------------------------------------------
+  */
+
+  #jobs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #jobBox {
+    border: 1px solid rgba(0, 0, 0, 0.574);
+    width: 80vw;
+    padding: 15px;
+  }
+
+  #jobTitleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 25px;
+  }
+
+  #jobTitle {
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+  }
+
+  #jobImage {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(53, 53, 53);
+    color: white;
+    margin: 5px;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #jobInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #jobInfo ul {
+    list-style: none;
+    font-size: .6em;
+    padding: 0;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #jobInfo li {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 3px;
+  }
+
+  #jobInfo span {
+    font-size: 1.5em;
+  }
+
+  #companyDescription {
+    font-size: .8em;
+    text-align: justify;
+    padding: 10px 0px 0px 0px;  
+  }
+
+  #saveApplyButtons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+  }
+  #saveApplyButtons  button {
+    width: 45%;
+    border-radius: 5px;
+  }
+
+  #saveJobButton {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+  }
+
+  #saveJobButton.saved {
+    background-color: black;
+    color: white;
+  }
+
+  #saveJobButton p {
+    margin: 0;
+  }
+
+  #applyCV {
+    background-color: black;
+    color: white;
+  }

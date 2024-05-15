@@ -1,0 +1,33 @@
+.jobDetails {
+    border: 1px solid black;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px;
+}
+
+.jobDetails div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.jobDetails p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#jobApply form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.candidateCV input {
+    width: 50%;
+    opacity: 0;
+}

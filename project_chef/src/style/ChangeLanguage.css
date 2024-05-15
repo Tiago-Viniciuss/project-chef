@@ -1,0 +1,40 @@
+#languageSelect {
+    width: 50px;
+    border: none;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    cursor: pointer;
+}
+
+#languageSelect:focus {
+    border: none;
+}
+
+#languageSelect option {
+    color: black;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+@media screen and (min-width: 1000px) {
+    #languageSelect {
+        width: 50px;
+        border: none;
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+    }
+    
+    #languageSelect option {
+        color: black;
+    }
+    
+}
