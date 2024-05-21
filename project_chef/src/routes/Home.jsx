@@ -67,8 +67,7 @@ const Home = () => {
     <div id='home'>
         <Header/>
         <Filters/>
-
-    
+      <p className='intro'>{t("home.intro")}</p>
       <section id='jobsSection'>
       <div className='jobContainer'>
         {jobs.map((job) => (

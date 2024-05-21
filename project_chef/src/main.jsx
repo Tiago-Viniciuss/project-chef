@@ -9,7 +9,7 @@ import CreateAd from './routes/CreateAd.jsx';
 import CandidateProfile from './routes/CandidateProfile.jsx';
 import CandidateProfileLogin from './routes/CandidateProfileLogin.jsx';
 import EditCandidateProfile from './routes/EditCandidateProfile.jsx';
-import CreateProfile from './routes/createProfile.jsx';
+import CreateProfile from './routes/CreateProfile.jsx';
 import ForgetCandidatePassword from './routes/ForgetCandidatePassword.jsx';
 import CreateCompanyProfile from './routes/CreateCompanyProfile.jsx';
 import CompanyProfileLogin from './routes/CompanyProfileLogin.jsx';

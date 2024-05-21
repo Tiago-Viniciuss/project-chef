@@ -99,16 +99,6 @@ const CreateCompanyProfile = () => {
               <option value={t("companyProfile.branch9")}>{t("companyProfile.branch9")}</option>
               <option value={t("companyProfile.branch10")}>{t("companyProfile.branch10")}</option>
               <option value={t("companyProfile.branch11")}>{t("companyProfile.branch11")}</option>
-              <option value={t("companyProfile.branch12")}>{t("companyProfile.branch12")}</option>
-              <option value={t("companyProfile.branch13")}>{t("companyProfile.branch13")}</option>
-              <option value={t("companyProfile.branch14")}>{t("companyProfile.branch14")}</option>
-              <option value={t("companyProfile.branch15")}>{t("companyProfile.branch15")}</option>
-              <option value={t("companyProfile.branch16")}>{t("companyProfile.branch16")}</option>
-              <option value={t("companyProfile.branch17")}>{t("companyProfile.branch17")}</option>
-              <option value={t("companyProfile.branch18")}>{t("companyProfile.branch18")}</option>
-              <option value={t("companyProfile.branch19")}>{t("companyProfile.branch19")}</option>
-              <option value={t("companyProfile.branch20")}>{t("companyProfile.branch20")}</option>
-              <option value={t("companyProfile.branch21")}>{t("companyProfile.branch21")}</option>
           </select>
           </div>
             <textarea id='companyDescription' name="description" cols="45" rows="15" className='form-control' placeholder={t("createCompany.placeholder3")} value={companyDescription} onChange={handleCompanyDescription}></textarea>

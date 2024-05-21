@@ -35,9 +35,11 @@ const CreateProfile = () => {
     const [candidateEmail, setCandidateEmail] = useState('')
     const [candidateBirthday, setCandidateBirthday] = useState('')
     const [candidateCity, setCandidateCity] = useState('')
-    const [candidateSchool, setCandidateSchool] = useState('')
+    const [candidateEducation, setCandidateEducation] = useState('')
     const [candidateProfession, setCandidateProfession] = useState('')
-
+    const [candidateLanguage, setCandidateLanguage] = useState('')
+    const [candidateMarital, setCandidateMarital] = useState('')
+    const [candidatePhone, setCandidatePhone] = useState('')
     const [candidatePassword, setCandidatePassword] = useState('')
 
     const handleCandidateName = (e) => {
@@ -52,11 +54,20 @@ const CreateProfile = () => {
     const handleCandidateCity = (e) => {
       setCandidateCity(e.target.value)
     }
-    const handleCandidateSchool = (e) => {
-      setCandidateSchool(e.target.value)
+    const handleCandidateEducation = (e) => {
+      setCandidateEducation(e.target.value)
     }
     const handleCandidateProfession = (e) => {
       setCandidateProfession(e.target.value)
+    }
+    const handleCandidateLanguage = (e) => {
+      setCandidateLanguage(e.target.value)
+    }
+    const handleCandidateMarital = (e) => {
+      setCandidateMarital(e.target.value)
+    }
+    const handleCandidatePhone = (e) => {
+      setCandidatePhone(e.target.value)
     }
     const handleCandidatePassword = (e) => {
       setCandidatePassword(e.target.value)
@@ -73,8 +84,11 @@ const CreateProfile = () => {
           CandidateEmail: candidateEmail,
           CandidateBirthday: candidateBirthday,
           CandidateCity: candidateCity,
-          CandidateSchool: candidateSchool,
+          CandidateEducation: candidateEducation,
           CandidateProfession: candidateProfession,
+          CandidateLanguage: candidateLanguage,
+          CandidateMarital: candidateMarital,
+          CandidatePhone: candidatePhone,
           CandidatePassword: candidatePassword,
         });
     
@@ -94,26 +108,39 @@ const CreateProfile = () => {
             <input className='form-control' type="text" name="userName" id="userName" placeholder={t("createCandidate.placeholder1")} required  autoComplete='userName' value={candidateName} onChange={handleCandidateName}/>
 
             <input className='form-control' type="email" name="userEmail" id="userEmail" placeholder={t("createCandidate.placeholder2")} autoComplete='userEmail' required value={candidateEmail} onChange={handleCandidateEmail}/>
-
+            <input
+            required
+            type="number"
+            name="candidatePhone"
+            id="candidatePhone"
+            className='form-control' placeholder={t("createCandidate.placeholder10")} pattern='^\d{9}$
+            '
+            value={candidatePhone} onChange={handleCandidatePhone}/>
             <input
             required
             type="number"
             name="candidateBirthday"
             id="candidateBirthday"
             className='form-control' placeholder={t("createCandidate.placeholder3")} min="1940" max="2024" value={candidateBirthday} onChange={handleCandidateBirthday}/>
-
             <input type="text" name="candidateCity" id="candidateCity" className='form-control' placeholder={t("createCandidate.placeholder4")} required value={candidateCity} onChange={handleCandidateCity}/>
-
-            <select required name="candidateEducation" id="candidateEducation" className='form-control' value={candidateSchool} onChange={handleCandidateSchool}>
-              <option value={t("createCandidate.label1")}>{t("createCandidate.label1")}</option>
-              <option value={t("createCandidate.label2")}>{t("createCandidate.label2")}</option>
-              <option value={t("createCandidate.label3")}>{t("createCandidate.label3")}</option>
-              <option value={t("createCandidate.label4")}>{t("createCandidate.label4")}</option>
-              <option value={t("createCandidate.label5")}>{t("createCandidate.label5")}</option>
-            </select>
-
             <input type="text" name="candidateProfession" id="candidateProfession" required placeholder={t("createCandidate.placeholder5")} className='form-control' value={candidateProfession} onChange={handleCandidateProfession}/>
-
+            <input type="text" name="candidateEducation" id="candidateEducation" className='form-control' placeholder={t("createCandidate.placeholder9")} required onChange={handleCandidateEducation} value={candidateEducation}/>
+            <input type="text" name="candidateMarital" id="candidateMarital" className='form-control' placeholder={t("createCandidate.placeholder7")} required onChange={handleCandidateMarital} value={candidateMarital}/>
+            <input type="text" name="candidateLanguage" id="candidateLanguage" className='form-control' placeholder={t("createCandidate.placeholder8")} required value={candidateLanguage} onChange={handleCandidateLanguage}/>
+            <label htmlFor="candidateNif">{t("createCandidate.label1")}</label>
+            <select id="candidateNif" className='form-control' required>
+              <optgroup>
+                <option value={t("createCandidate.option1")}>{t("createCandidate.option1")}</option>
+                <option value={t("createCandidate.option2")}>{t("createCandidate.option2")}</option>
+              </optgroup>
+            </select>
+            <label htmlFor="candidateNiss">{t("createCandidate.label2")}</label>
+            <select id="candidateNiss" className='form-control' required>
+              <optgroup>
+                <option value={t("createCandidate.option1")}>{t("createCandidate.option1")}</option>
+                <option value={t("createCandidate.option2")}>{t("createCandidate.option2")}</option>
+              </optgroup>
+            </select>
             <input className='form-control' type="password" name="userPassword" id="userPassword" placeholder={t("createCandidate.placeholder6")} autoComplete='current-password' required pattern="^(?=.*[a-z])(?=.*[0-9]).{8,}$"
              title="A senha deve conter letras minúsculas, números e no mínimo 8 caracteres" value={candidatePassword} onChange={handleCandidatePassword}/>
 

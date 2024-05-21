@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, addDoc, collection} from 'firebase/firestore';
+import { useTranslation } from 'react-i18next';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -23,10 +24,15 @@ const db = getFirestore(app);
 
 const JobDetails = () => {
 
+  const {t} = useTranslation()
+
   const { id } = useParams();
   const [jobDetails, setJobDetails] = useState(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
+
     const fetchJobDetails = async () => {
       // Use o ID da vaga para recuperar os detalhes da vaga do Firebase
       try {
@@ -50,13 +56,17 @@ const JobDetails = () => {
     return <div>Carregando...</div>;
   }
 
+
+  const candidateEmail = localStorage.getItem('candidateEmail');
+
+
   return (
     <div id='jobDetails'>
       <Header/>
       <Link to={'/'}>
           <span>
             <span className='material-symbols-outlined'>arrow_back_ios</span>
-            Voltar à lista de empregos
+            {t("jobDetails.backToList")}
           </span>
       </Link>
       <h1>{jobDetails.adTitle}</h1>
@@ -72,24 +82,30 @@ const JobDetails = () => {
       </section>
       <section id='detailsComplement'>
         <div className='jobDescription'>
-          <h4>Descrição da vaga:</h4>
+          <h4>{t("jobDetails.description")}</h4>
            {jobDetails.description}
         </div>
         <div className='jobDescription'>
-          <h4>Perfil:</h4>
+          <h4>{t("jobDetails.profile")}</h4>
            {jobDetails.profile}
         </div>
         <div className='jobDescription'>
-          <h4>Horário:</h4>
+          <h4>{t("jobDetails.description")}</h4>
            {jobDetails.jobTypeDescription}
         </div>
         <div className='jobDescription'>
-          <h4>Salário:</h4>
+          <h4>{t("jobDetails.salary")}</h4>
            {jobDetails.jobSalary}
         </div>
-        <Link to={`/job-apply/${id}`} state={jobDetails}>
-          <button className='btn btn-dark'>Aplicar para esta vaga</button>
+        {candidateEmail && (
+          <Link to={`/job-apply/${id}`} state={jobDetails}>
+          <button className='btn btn-dark'>{t("jobDetails.applyButton")}</button>
         </Link>
+        )
+        }
+        {!candidateEmail && (
+          <button className='btn btn-dark' onClick={() => navigate('/candidate-profile-login')}>{t("jobDetails.loginButton")}</button>
+        )}
       </section>
       <Footer/>
     </div>

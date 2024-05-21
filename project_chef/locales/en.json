@@ -1,17 +1,18 @@
 {   "header": {
-        "title": "Projeto Job", 
+        "title": "Da Chef", 
         "menuLink1": "Jobs",
         "menuLink2": "Company Area",
         "menuLink3": "Candidate Profile",
         "menuLink4": "Career Guide",
         "menuLink5": "Advertise Here",
-        "menuLink6": "News",
+        "menuLink6": "Market Place",
         "companyButton": "Company Login",
         "candidateButton": "Candidate Login"
     },
 
     "home": {
-        "applyButton": "Apply"
+        "applyButton": "Apply",
+        "intro": "Find the best opportunities within the restaurant sector here. From bars and restaurants to people needing a cook for weekend dinner."
     },
 
     "companyButtons": {
@@ -26,7 +27,7 @@
         "createAdTitle": "Create Advertisement",
         "label1": "Advertisement Title",
         "label2": "Company Name",
-        "label3": "Branch of Activity",
+        "label3": "Niche of Activity",
         "label4": "Location",
         "label5": "Short Description",
         "label6": "Type of Work",
@@ -38,26 +39,17 @@
         "publishButton": "Publish Ad",
 
         "branch1": "Select a category",
-        "branch2": "Administrative and Secretarial",
-        "branch3": "Agriculture and Gardening",
-        "branch4": "Store Assistant and Cashier",
-        "branch5": "Call Center and Telemarketing",
-        "branch6": "Executive Positions",
-        "branch7": "Commerce and Sales",
-        "branch8": "Civil Construction",
-        "branch9": "Accounting and Finance",
-        "branch10": "Sports and Fitness",
-        "branch11": "Domestic and Cleaning",
-        "branch12": "Training and Education",
-        "branch13": "Industrial, Manufacturing, and Clothing",
-        "branch14": "IT and Telecommunications",
-        "branch15": "Marketing, Advertising, and Events",
-        "branch16": "Restaurant Branch",
-        "branch17": "Security and Surveillance",
-        "branch18": "Social Service and Volunteering",
-        "branch19": "Health and Beauty",
-        "branch20": "Tourism and Hospitality",
-        "branch21": "Others",
+        "branch2": "Restaurants",
+        "branch3": "Coffee Shops",
+        "branch4": "Bakeries",
+        "branch5": "Event Organization",
+        "branch6": "Hotel or Hostel",
+        "branch7": "Restaurant Delivery",
+        "branch8": "Bars and Pubs",
+        "branch9": "Meal at Home",
+        "branch10": "Traveling Cook",
+        "branch11": "Outros",
+
 
         "chooseLocation": "Choose the location",
         "location1": "Albufeira",
@@ -122,7 +114,7 @@
     "myAds": {
         "title": "Your Company's Ads",
         "location": "Location",
-        "branchActivity": "Branch of Activity",
+        "branchActivity": "Niche of Activity",
         "description": "Description",
         "workLoad": "Work Hours",
         "typeWork": "Type of Work",
@@ -137,8 +129,8 @@
     },
 
     "profileLogin": {
-        "titleCompany": "Create job ads for your company:",
-        "titleCandidate": "Join us and enjoy every feature:",
+        "titleCompany": "Hire restaurant professionals:",
+        "titleCandidate": "Join and find restaurant's jobs:",
         "placeholder1": "Enter your email",
         "placeholder2": "Insert your password",
         "submitButton": "Login",
@@ -163,13 +155,15 @@
         "placeholder4": "Where do you live?",
         "placeholder5": "What is your profession?",
         "placeholder6": "Create a password using letters and numbers",
-        "submitButton":"Create Candidate Profile",
-
-        "label1": "Unqualified",
-        "label2": "Qualified",
-        "label3": "Student",
-        "label4": "Master",
-        "label5": "Degree"
+        "placeholder7": "What is your marital status?",
+        "placeholder8": "Do you speak other languages? Which?",
+        "placeholder9": "Do you have any relevant course for the area?",
+        "placeholder10": "Insert your phone number",
+        "label1": "Do you have a portuguese Taxpayer Number?",
+        "label2": "Do you have a Social Security Number?",
+        "option1": "Yes",
+        "option2": "No",
+        "submitButton":"Create Candidate Profile"
     },
     
     "changePassword": {
@@ -193,6 +187,16 @@
         "option4": "Oldest Jobs",
         "submitButton": "Search Jobs",
         "filterButton": "Filters"
+    },
+
+    "jobDetails": {
+        "backToList": "Back to the job list",
+        "description": "Job description:",
+        "profile": "Target profile:",
+        "time": "Work hours:",
+        "salary": "Salary:",
+        "applyButton": "Apply to this job",
+        "loginButton": "Login to apply"
     }
 
 }

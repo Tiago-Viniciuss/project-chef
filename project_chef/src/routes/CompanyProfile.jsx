@@ -84,7 +84,7 @@ const CompanyProfile = () => {
     const currentDate = new Date().toLocaleDateString('pt-PT');
     const companyEmail = localStorage.getItem('companyEmail');
     const form = document.getElementById('createAd')
-    const formData = { adTitle, companyName, chooseCategory, adCity, workPlaceSelected, jobTypeSelected, description, profile, jobTypeDescription, jobSalary, smallDescription,
+    const formData = { adTitle, companyName, chooseCategory, adCity, workPlaceSelected, description, profile, jobTypeDescription, jobSalary, smallDescription,
       CreationDate: currentDate , companyEmail: companyEmail};
     try {
       await addDoc(collection(db, 'Vagas'), formData);
@@ -93,7 +93,6 @@ const CompanyProfile = () => {
       setChooseCategory('');
       setAdCity('');
       setWorkPlace('');
-      setJobType('');
       setDescription('');
       setProfile('');
       setJobTypeDescription('');
@@ -159,17 +158,6 @@ const CompanyProfile = () => {
               <option value={t("companyProfile.branch9")}>{t("companyProfile.branch9")}</option>
               <option value={t("companyProfile.branch10")}>{t("companyProfile.branch10")}</option>
               <option value={t("companyProfile.branch11")}>{t("companyProfile.branch11")}</option>
-              <option value={t("companyProfile.branch12")}>{t("companyProfile.branch12")}</option>
-              <option value={t("companyProfile.branch13")}>{t("companyProfile.branch13")}</option>
-              <option value={t("companyProfile.branch14")}>{t("companyProfile.branch14")}</option>
-              <option value={t("companyProfile.branch15")}>{t("companyProfile.branch15")}</option>
-              <option value={t("companyProfile.branch16")}>{t("companyProfile.branch16")}</option>
-              <option value={t("companyProfile.branch17")}>{t("companyProfile.branch17")}</option>
-              <option value={t("companyProfile.branch18")}>{t("companyProfile.branch18")}</option>
-              <option value={t("companyProfile.branch19")}>{t("companyProfile.branch19")}</option>
-              <option value={t("companyProfile.branch20")}>{t("companyProfile.branch20")}</option>
-              <option value={t("companyProfile.branch21")}>{t("companyProfile.branch21")}</option>
-
             </select>
           </div>
           <div>
@@ -207,41 +195,6 @@ const CompanyProfile = () => {
       ></textarea>
       <p>{t("companyProfile.charactersRemaining")}: {100 - smallDescription.length}</p> {/* Exibe o número de caracteres restantes */}
     </div>
-          <div>
-            <legend>{t("companyProfile.label6")}</legend>
-            <fieldset id='workPlace' className='form-control'>
-                        <label>
-            <input
-              type="checkbox"
-              name="category"
-              value="on-site"
-              checked={workPlaceSelected === "on-site"}
-              onChange={handleWorkPlaceChange}
-            />
-            {t("companyProfile.workPlace1")}
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="category"
-              value="remote"
-              checked={workPlaceSelected === "remote"}
-              onChange={handleWorkPlaceChange}
-            />
-            {t("companyProfile.workPlace2")}
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="category"
-              value="hybrid"
-              checked={workPlaceSelected === "hybrid"}
-              onChange={handleWorkPlaceChange}
-            />
-            {t("companyProfile.workPlace3")}
-          </label>
-            </fieldset>
-          </div>
           <div>
             <legend>{t("companyProfile.label7")}</legend>
             <fieldset id='jobsType' className='form-control'>

@@ -1,16 +1,19 @@
 {
     "header": {
-        "title": "Projeto Job", 
+        "title": "Da Chef", 
         "menuLink1": "Vagas",
-        "menuLink2": "Área da Empresa", "menuLink3": "Perfil do Candidato","menuLink4": "Guia de Carreira",
+        "menuLink2": "Área da Empresa", 
+        "menuLink3": "Perfil do Candidato",
+        "menuLink4": "Guia de Carreira",
         "menuLink5": "Anuncie Aqui",
-        "menuLink6": "Notícias",
+        "menuLink6": "Market Place",
         "companyButton": "Login Empresa",
         "candidateButton": "Login Candidato"
     },
 
     "home": {
-        "applyButton": "Aplicar"
+        "applyButton": "Aplicar",
+        "intro": "Encontre aqui as melhores oportunidades dentro da área de restauração. Desde bares e restaurantes até pessoas necessitando de um cozinheiro para o jantar de fim de semana."
     },
 
     "companyButtons": {
@@ -25,7 +28,7 @@
         "createAdTitle": "Criar Vaga",
         "label1": "Título do Anúncio",
         "label2": "Nome da Empresa",
-        "label3": "Ramo de Atividade",
+        "label3": "Nicho de Atividade",
         "label4": "Localidade",
         "label5": "Descrição Curta",
         "label6": "Tipo de Trabalho",
@@ -37,26 +40,16 @@
         "publishButton": "Publicar Vaga",
 
         "branch1": "Selecione uma categoria",
-        "branch2": "Administrativo e Secretariado",
-        "branch3": "Agricultura e Jardinagem",
-        "branch4": "Assistente de Loja e Caixa",
-        "branch5": "Call Center e Telemarketing",
-        "branch6": "Cargos Executivos",
-        "branch7": "Comércio e Vendas",
-        "branch8": "Construção Civil",
-        "branch9": "Contabilidade e Finanças",
-        "branch10": "Desportos e Fitness",
-        "branch11": "Domésticos e Limpeza",
-        "branch12": "Formação e Educação",
-        "branch13": "Industrial, Fabrico e Confecção",
-        "branch14": "IT e Telecomunicações",
-        "branch15": "Marketing, Publicidade e Eventos",
-        "branch16": "Restauração",
-        "branch17": "Segurança e Vigilância",
-        "branch18": "Serviço Social e Voluntariado",
-        "branch19": "Saúde e Beleza",
-        "branch20": "Turismo e Hotelaria",
-        "branch21": "Outros",
+        "branch2": "Restaurantes",
+        "branch3": "Pastelarias",
+        "branch4": "Padarias",
+        "branch5": "Organização de Eventos",
+        "branch6": "Hotél ou Hostel",
+        "branch7": "Restaurante Delivery",
+        "branch8": "Bares e Pubs",
+        "branch9": "Refeição em Casa",
+        "branch10": "Cozinheiro Viajante",
+        "branch11": "Outros",
 
         "chooseLocation": "Escolha a localidade",
         "location1": "Albufeira",
@@ -117,7 +110,7 @@
     "myAds": {
         "title": "Vagas da Sua Empresa",
         "location": "Localidade",
-        "branchActivity": "Ramo de Atividade",
+        "branchActivity": "Nicho de Atividade",
         "description": "Descrição",
         "workLoad": "Horário",
         "typeWork": "Tipo de Trabalho",
@@ -132,8 +125,8 @@
     },
 
     "profileLogin": {
-        "titleCompany": "Crie vagas de emprego para vossa empresa:",
-        "titleCandidate": "Junta-te a nós e aproveite cada funcionalidade:",
+        "titleCompany": "Contrate profissionais da área de restauração:",
+        "titleCandidate": "Junta-te e encontre vagas na área da restauração:",
         "placeholder1": "Digite vosso email",
         "placeholder2": "Insira vossa palavra passe",
         "submitButton": "Entrar",
@@ -151,20 +144,22 @@
     },
 
     "createCandidate": {
-        "title": "Seja bem-vindo ao Projeto Job!",
+        "title": "Seja bem-vindo ao Da Chef!",
         "placeholder1": "Insira o vosso nome completo",
         "placeholder2": "Insira o vosso melhor email",
         "placeholder3": "Em que ano nasceste?",
         "placeholder4": "Em que cidade vives?",
-        "placeholder5": "Qual a vossa profissão?",
+        "placeholder5": "Qual a vossa função?",
         "placeholder6": "Crie uma senha usando letras e números",
-        "submitButton":"Criar Perfil do Candidato",
-
-        "label1": "Não qualificado",
-        "label2": "Qualificado",
-        "label3": "Estudante",
-        "label4": "Mestrado",
-        "label5": "Licenciatura"
+        "placeholder7": "Qual o vosso estado civil?",
+        "placeholder8": "Falas outros idiomas? Quais?",
+        "placeholder9": "Tens algum curso relevante para a área? Qual?",
+        "placeholder10": "Informe o vosso número de telemóvel",
+        "label1": "Possuis Número de Contribuinte português?",
+        "label2": "Possuis Número da Segurança Social?",
+        "option1": "Sim",
+        "option2": "Não",
+        "submitButton":"Criar Perfil do Candidato"
     },
 
     "changePassword": {
@@ -188,5 +183,15 @@
         "option4": "Mais Antigos",
         "submitButton": "Buscar Vagas",
         "filterButton": "Filtros"
+    },
+
+    "jobDetails": {
+        "backToList": "Voltar à lista de vagas",
+        "description": "Descrição da vaga:",
+        "profile": "Perfil buscado:",
+        "time": "Carga horária:",
+        "salary": "Salário:",
+        "applyButton": "Aplicar para esta vaga",
+        "loginButton": "Faça login para aplicar"
     }
 }
