@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
-import '../style/CandidateProfile.css'
+import '../style/FormsStandard.css'
 import Header from '../components/Header'
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
@@ -97,16 +97,17 @@ const CandidateProfileLogin = () => {
       };
 
   return (
-    <div id='candidateProfileLoginContainer'>
-      <Header/>
-        <h3 className='loginProfileTitle'>
+    <div>
+      <Link to={'/'} className='homeButton'>
+        <span className='material-symbols-outlined'>backspace</span>
+      </Link>
+        <h3>
             {t("profileLogin.titleCandidate")}
         </h3>
-        <form onSubmit={loginCandidate} id='formCandidateProfile'>
+        <form onSubmit={loginCandidate} className='loginFormContainer'>
             <input className='form-control' type="email" name="candidateEmail" id="candidateEmail" placeholder={t("profileLogin.placeholder1")} value={candidateEmail} onChange={handleCandidateEmail} autoComplete='candidateEmail'/>
             <input className='form-control' type="password" value={candidatePassword} name="candidatePassword" id="candidatePassword" placeholder={t("profileLogin.placeholder2")} autoComplete='current-password'  onChange={handleCandidatePassword} />
-            <input className='btn btn-dark' type="submit" value={t("profileLogin.submitButton")} />
-             
+            <input className='btn btn-dark form-control' type="submit" value={t("profileLogin.submitButton")} />  
         </form>
         <Link to="/create-profile">
             <p className='createAccount'>{t("profileLogin.createAccount")}</p>
@@ -114,7 +115,7 @@ const CandidateProfileLogin = () => {
         <Link to={'/forget-candidate-password'}>
           <p className='forgetPassword'>{t("profileLogin.forgetPassword")}</p>
         </Link>
-        <button onClick={loginWithGoogle} className='btn btn-dark'>Login with Google</button>
+        <button onClick={loginWithGoogle} className='btn loginGoogle'></button>
     </div>
   )
 }

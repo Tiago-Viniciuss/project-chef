@@ -5,6 +5,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import {useNavigate} from 'react-router-dom'
 import Header from '../components/Header';
 import { useTranslation } from 'react-i18next';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -18,6 +19,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 const CompanyProfileLogin = () => {
 
@@ -28,8 +31,6 @@ const CompanyProfileLogin = () => {
   function navigateCompanyProfile() {
       navigate('/company-profile')
   }
-
-  
 
   const [companyEmail, setCompanyEmail] = useState('');
   const [companyPassword, setCompanyPassword] = useState('');
@@ -77,11 +78,27 @@ const CompanyProfileLogin = () => {
     }
   }, []);
 
+  const loginWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+  
+      // Aqui você pode salvar os detalhes do usuário no Firestore ou usar como necessário
+      console.log(user);
+      localStorage.setItem('companyEmail', user.email);
+      navigateCompanyProfile();
+    } catch (error) {
+      console.error('Erro ao fazer login com Google:', error);
+    }
+  };
+
   return (
     <div>
-      <Header/>
-      <h3 className='loginProfileTitle'>{t("profileLogin.titleCompany")}</h3>
-      <form onSubmit={loginCompany} id='formCompanyProfile'>
+      <Link to={'/'} className='homeButton'>
+        <span className='material-symbols-outlined'>backspace</span>
+      </Link>
+      <h3>{t("profileLogin.titleCompany")}</h3>
+      <form onSubmit={loginCompany} className='loginFormContainer'>
         <input
           className='form-control'
           type='email'
@@ -102,7 +119,7 @@ const CompanyProfileLogin = () => {
           value={companyPassword}
           onChange={handleCompanyPassword}
         />
-        <input className='btn btn-dark' type='submit' value={t("profileLogin.submitButton")} />
+        <input className='btn btn-dark form-control' type='submit' value={t("profileLogin.submitButton")} />
       </form>
       <Link to='/create-company-profile'>
         <p className='createAccount'>{t("profileLogin.createAccount")}</p>
@@ -110,6 +127,7 @@ const CompanyProfileLogin = () => {
       <Link to={'/forget-company-password'}>
         <p className='forgetPassword'>{t("profileLogin.forgetPassword")}</p>
       </Link>
+      <button onClick={loginWithGoogle} className='btn loginGoogle'></button>
     </div>
   );
 };

@@ -33,43 +33,6 @@ Form Login Profile
 
 */
 
-#formCompanyProfile {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-  padding: 25px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.loginProfileTitle {
-  margin: auto;
-  width: 280px;
-}
-
-#formCompanyProfile input {
-  width: 100%;
-}
-
-.createCompanyAccount {
-  margin-top: 15px;
-  color: black;
-}
-
-.forgetPassword {
-  margin-top: 5px;
-  font-weight: 500;
-}
-
-
-
 
 .jobsSection {
     width: 300px;

@@ -1,0 +1,42 @@
+.homeButton {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 30px;
+    left: 20px;
+}
+
+.homeButton > span {
+    font-size: 1.5em;
+}
+
+.loginFormContainer {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+a > p {
+    width: 300px;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: rgba(33, 33, 33, 0.783);
+}
+
+.loginGoogle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('/public/images/googleLogo.png');
+    background-size: cover;
+    background-position: center;
+}

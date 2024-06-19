@@ -132,12 +132,12 @@
     },
 
     "profileLogin": {
-        "titleCompany": "Hire restaurant professionals:",
-        "titleCandidate": "Join and find restaurant's jobs:",
+        "titleCompany": "Login to hire!",
+        "titleCandidate": "Join and enjoy!",
         "placeholder1": "Enter your email",
         "placeholder2": "Insert your password",
         "submitButton": "Login",
-        "createAccount": "Don't have a registration? Create your account here.",
+        "createAccount": "Are you new here? Create your account now.",
         "forgetPassword": "Have you forgotten your password?"
     },
 

@@ -128,12 +128,12 @@
     },
 
     "profileLogin": {
-        "titleCompany": "Contrate profissionais da área de restauração:",
-        "titleCandidate": "Junta-te e encontre vagas na área da restauração:",
+        "titleCompany": "Junta-te para contratar!",
+        "titleCandidate": "Junta-te e aproveite!",
         "placeholder1": "Digite vosso email",
         "placeholder2": "Insira vossa palavra passe",
         "submitButton": "Entrar",
-        "createAccount": "Não tem cadastro? Crie a sua conta aqui.",
+        "createAccount": "És novo aqui? Crie a tua conta agora.",
         "forgetPassword": "Esqueceste-te a palavra passe?"
     },
 
