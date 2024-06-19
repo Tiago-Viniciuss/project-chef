@@ -1,4 +1,7 @@
-
+#home {
+  background-color: rgb(246, 246, 246);
+  padding-top: 25px;
+}
 
 #header {
     width: 100vw;
@@ -21,12 +24,28 @@
 #brandTitle {
     color: white;
     font-size: 1.2em;
-    font-weight: 700
+    font-weight: 700;
+    margin: 0px;
+    font-family:  "Tangerine", cursive;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 3px;
 }
 
 #brandTitle a {
     color: white;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#brandPicture {
+  width: 25px;
+  height: 25px;
+  background-color: #21252900;
+  background-image: url('/images/icon.png');
+  background-size: cover;
 }
 
 #openMenu {
@@ -96,31 +115,34 @@
 }
 
 
-#loginButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    gap: 10px;
-    width: 100%;
-}
-
-#loginButtons a {
-    text-decoration: none;
-    background-color: white;
-    color: black;
-    padding: 10px;
-    width: 100%;
-    text-align: right;
-    display: flex;
-    justify-content: right;
-    align-items: end;
-    gap: 5px;
+#searchBox {
+  width: 250px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .intro {
   padding: 25px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  color: rgb(0, 0, 0);
+  margin-top: 70px;
+  margin: auto;
+  width: 350px;
+}
+
+#homeBackground {
+  background-image: url('/images/teste.png');
+  background-size: cover;
+  width: 270px;
+  height: 370px;
+  border-bottom: 5px solid rgb(0, 0, 0);
+  margin-bottom: 40px;
+  visibility: hidden;
+  position: relative;
+  left: -100%; /* Começa fora da tela à esquerda */
+  transition: left .5s, visibility 0s .5s;
 }
 
 #containerFooter {
@@ -243,6 +265,8 @@
   }
 
   .jobBody {
+    background-color: rgb(0, 0, 0);
+    color: white;
     padding: 25px;
     width: 80%;
     border: 1px solid black;
@@ -280,8 +304,8 @@
   }
 
   .buttons .material-symbols-outlined {
-    background-color: #212529;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     height: 26px;
     width: 10px;
     font-size: 1.7em;
@@ -289,4 +313,299 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  hr {
+    background-color: white;
+    height: 3px;
+  }
+
+
+  @media screen and (min-width: 600px) {
+
+    #jobsSection {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .jobContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+     #searchBox {
+      width: 350px;
+      margin: auto;
+      margin-top: 45px;
+      margin-bottom: 45px;
+    }
+    
+    .intro {
+      padding: 45px;
+      font-size: 1.8em;
+      width: 90%;
+      margin: auto;
+    } 
+
+    .jobBody {
+      padding: 25px;
+      width: 450px;
+    }
+
+    
+  }
+
+  @media screen and (min-width: 800px) {
+
+
+    #homeIntro {
+      display: flex;
+      flex-direction: row;
+    }
+    
+    #jobsSection {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .jobContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .jobBody {
+      padding: 25px;
+      width: 350px;
+    }
+
+    #searchBox {
+      width: 450px;
+      margin: auto;
+      margin-top: 45px;
+      margin-bottom: 45px;
+    }
+    
+    .intro {
+      padding: 45px;
+      font-size: 2em;
+      width: 80%;
+      margin: auto;
+      order: 1;
+    }
+
+    #homeBackground {
+      width: 270px;
+      height: 370px;
+      margin-top: 50px;
+      order: 0;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+
+    #homeIntro {
+      display: flex;
+      flex-direction: row;
+      margin-top: 40px;
+    }
+
+    #header {
+      width: 100%;
+      height: 80px;
+      background-color: rgb(0, 0, 0);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 20;
+      transition: .5s;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: top 0.3s;
+  }
+
+    #openMenu {
+      background-color: transparent;
+      color: white;
+      font-size: 1.3em;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      display: none;
+      visibility: hidden;
+  }
+  
+  #openMenu:hover, #openMenu:focus {
+      border: black;
+      outline: none;
+  }
+  
+  #closeMenu {
+      background-color: transparent;
+      color: white;
+      font-size: 1.4em;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      display: none;
+  }
+  
+  #closeMenu:hover, #closeMenu:focus {
+      border: black;
+      outline: none;
+  }
+  
+  #brandTitle {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0px;
+    font-family:  "Tangerine", cursive;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 3px;
+}
+
+  #brandTitle a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+}
+
+    #menuNavigation {
+      width: 77%;
+      height: 50px;
+      padding-top: 50px;
+      position: fixed;
+      top: 0;
+      left: 150px;
+      visibility: visible;
+      transition: .2s;
+      overflow-x: visible;
+      z-index: 25;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+
+  #menuNavigation.opened {
+      width: 76%;
+      height: 50px;
+      padding-top: 50px;
+      position: fixed;
+      top: 0;
+      left: 150px;
+      visibility: visible;
+      transition: .2s;
+      overflow-x: visible;
+      z-index: 25;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+}
+  
+  #navigationLinks {
+    width: 75%;
+    margin: 0px;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+#navigationLinks a {
+    color: white;
+    font-size: 0.8em;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#navigationLinks a:hover {
+  text-decoration: underline;
+}
+
+
+#loginButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
+    width: 75px;
+    position: fixed;
+    right: 130px;
+}
+
+#loginButtons a {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    width: 85px;
+    text-align: right;
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    gap: 5px;
+    font-size: 0.6em;
+}
+
+#searchBox {
+  width: 650px;
+  height: 50px;
+  margin: auto;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+    
+    .jobBody {
+      padding: 25px;
+      width: 300px;
+    }
+
+    #homeBackground {
+      width: 370px;
+      height: 470px;
+      margin-top: 50px;
+    }
+
+   /* #headerContainer {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    transition: 0.5s;
+    top: 0;
+    z-index: 65;
+  }
+  
+  #headerContainer.hidden {
+    opacity: 0;
+    transition: 0.5s;
+    height: 0px;
+  }
+  
+  .content {
+    padding: 60px 20px; 
+    height: 2000px; 
+  }*/
   }

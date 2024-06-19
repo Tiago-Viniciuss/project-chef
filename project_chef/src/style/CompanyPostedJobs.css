@@ -1,7 +1,5 @@
 .postedJobTitle {
-    position: absolute;
-    top: 100px;
-    left: 15px;
+    margin-top: 120px;
 }
 
 #postedJobContainer {
@@ -10,7 +8,7 @@
     justify-content: center;
     gap: 25px;
     padding: 15px;
-    margin-top: 140px;
+    margin-top: 50px;
 }
 
 .postedJob {
@@ -33,4 +31,22 @@
 .confirmationDialog button {
     width: 30%;
     margin: 5px;
+}
+
+
+@media screen and (min-width: 800px) {
+
+    #postedJobContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 15px;
+        margin-top: 50px;
+    }
+
+    .postedJob {
+        width: 400px;
+    }
 }

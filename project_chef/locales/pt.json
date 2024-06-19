@@ -13,14 +13,17 @@
 
     "home": {
         "applyButton": "Aplicar",
-        "intro": "Encontre aqui as melhores oportunidades dentro da área de restauração. Desde bares e restaurantes até pessoas necessitando de um cozinheiro para o jantar de fim de semana."
+        "intro": "Encontre aqui as melhores oportunidades dentro da área de restauração",
+        "searchBox": "Busque uma vaga aqui...",
+        "moreSoon": "Mais vagas em breve..."
     },
 
     "companyButtons": {
         "button1": "Perfil da Empresa",
         "button2": "Criar uma Vaga",
         "button3": "Meus Anúncios",
-        "button4": "Outro Botão"
+        "button4": "Chat",
+        "button5": "Outro botão"
     },
 
     "companyProfile": {
@@ -193,5 +196,17 @@
         "salary": "Salário:",
         "applyButton": "Aplicar para esta vaga",
         "loginButton": "Faça login para aplicar"
+    },
+
+    "applyJob": {
+        "title": "Você está a aplicar para:",
+        "personalData": "Dados pessoais:",
+        "beContacted": "Seja contactado pelo empregador",
+        "label1": "Nome Completo",
+        "label2": "Telemóvel",
+        "label3": "Currículo",
+        "label4": "Apresentação",
+        "placeholder1": "Anexar Currículo",
+        "button1": "Aplicar agora"
     }
 }

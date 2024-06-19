@@ -18,6 +18,7 @@ import ForgetCompanyPassword from './routes/ForgetCompanyPassword.jsx';
 import JobDetails from './routes/JobDetails.jsx';
 import CompanyPostedJobs from './routes/CompanyPostedJobs.jsx';
 import JobApply from './routes/JobApply.jsx';
+import MessageList from './routes/MessageList.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="job/:id" element={<JobDetails />} /> {/* Rota para detalhes da vaga */}
         </Route>
         <Route path="job-apply/:id" element={<JobApply />} />
+        <Route path='message-list' element= {<MessageList/>}/>
       </Routes>
     </Router>
   </React.StrictMode>,

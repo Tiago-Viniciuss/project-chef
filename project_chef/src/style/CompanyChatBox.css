@@ -1,0 +1,46 @@
+#CompanyChatBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#messsagesTitle {
+    text-align: left;
+    margin: 30px;
+}
+
+#conversationsContainer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.message {
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+}
+
+.messageCandidate {
+    margin: 10px 0px 0px 10px;
+}
+
+.messageJobTitle {
+    margin-left: 10px;
+    font-size: 0.8em;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.messageContent {
+    text-align: justify;
+    padding: 0px 20px;
+}

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, updateDoc, addDoc } from 'firebase/firestore';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/JobApply.css';
@@ -27,6 +27,7 @@ const JobApply = () => {
     const firestore = getFirestore(app);
 
     const { id } = useParams();
+    const {t} = useTranslation()
 
     const [jobDetails, setJobDetails] = useState(null);
 
@@ -96,14 +97,25 @@ const JobApply = () => {
 
       const applyToJob = async (e) => {
         e.preventDefault();
-      
+    
         try {
-          const usersCollectionRef = collection(firestore, 'Candidates Data');
-      
+          const usersCollectionRef = collection(db, 'Candidates Data');
+          const conversationsCollectionRef = collection(db, 'Conversations');
+    
           await updateDoc(doc(usersCollectionRef, candidateEmail), { 
             CandidatePhone: candidatePhone,
           });
-      
+    
+          await addDoc(conversationsCollectionRef, {
+            JobTitle: jobDetails.adTitle,
+            Name: userData.CandidateName,
+            Message: candidateLetter,
+            CandidateEmail: candidateEmail,
+            Timestamp: new Date()
+          });
+    
+          alert(`Obrigado, ${userData && userData.CandidateName}! A candidatura para ${jobDetails && jobDetails.adTitle} foi feita com sucesso.`);
+          navigate('/');
         } catch (error) {
           console.error('Erro ao adicionar usuário:', error);
         }
@@ -135,16 +147,12 @@ const JobApply = () => {
           });
       };
 
-
-   
-
-
-
+    
 
     return (
         <div id='jobApply'>
             <Header />
-            <h1>Você está a aplicar para:</h1>
+            <h1>{t('applyJob.title')}</h1>
             <section className='jobDetails'>
                 <h3>{jobDetails && jobDetails.adTitle}</h3>
                 <div>
@@ -156,22 +164,22 @@ const JobApply = () => {
                 </div>
             </section>
             <form onSubmit={applyToJob}>
-                <h5>Dados pessoais:</h5>
-                <p>Seja contactado pelo empregador:</p>
-                <span>Nome Completo:</span>
+                <h5>{t('applyJob.personalData')}</h5>
+                <p>{t('applyJob.beContacted')}</p>
+                <span>{t('applyJob.label1')}</span>
                 <p className='form-control'>{userData && userData.CandidateName}</p>
-                <span>E-mail:</span>
+                <span>E-mail</span>
                 <p className='form-control'>{userData && userData.CandidateEmail}</p>
-                <span>Telemóvel:</span>
+                <span>{t('applyJob.label2')}</span>
                 <input type="number" name="candidatePhone" id="candidatePhone" className='form-control' placeholder='Insira seu número de telemóvel' required value={candidatePhone} onChange={handleCandidatePhone}/>
-                <span>Currículo:</span>
+                <span>{t('applyJob.label3')}</span>
                 <div className='candidateCV'>
-                    <label className='form-control' htmlFor="candidateCV">Anexar Currículo</label>
+                    <label className='form-control' htmlFor="candidateCV">{t('applyJob.placeholder1')}</label>
                     <input type="file" name="candidateCV" id="candidateCV" />
                 </div>
-                <span>Apresentação:</span>
+                <span>{t('applyJob.label4')}</span>
                 <textarea name="candidateLetter" id="candidateLetter" cols="30" rows="10" className='form-control' onChange={handleCandidateLetter} value={candidateLetter}></textarea>
-                <button type='submit' className='btn btn-dark'>Aplicar agora</button>
+                <button type='submit' className='btn btn-dark'>{t('applyJob.button1')}</button>
             </form>
             <Footer />
         </div>

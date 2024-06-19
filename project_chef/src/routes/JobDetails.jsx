@@ -77,7 +77,6 @@ const JobDetails = () => {
               <li><span className='material-symbols-outlined' >work</span> {jobDetails.chooseCategory}</li>
               <li><span className='material-symbols-outlined'>apartment</span> {jobDetails.companyName}</li>
               <li><span className='material-symbols-outlined'>schedule</span>  {jobDetails.jobTypeSelected}</li>
-              <li><span className='material-symbols-outlined'>location_away</span>  {jobDetails.workPlaceSelected}</li>
          </ul>
       </section>
       <section id='detailsComplement'>

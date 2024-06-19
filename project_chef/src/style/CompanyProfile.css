@@ -205,6 +205,25 @@ a {
   #myPostedJobs {
     display: none;
   }
+
+  #CompanyChatBox {
+    display: none;
+  }
+
+  @media screen and (min-width: 800px) {
+
+    #companyProfileInfo {
+        width: 650px;
+        margin: auto;
+        padding: 100px 25px;
+    }
+
+    #createJobs {
+        width: 650px;
+        margin: auto;
+        padding: 100px 25px;
+    }
+}
   
 
 

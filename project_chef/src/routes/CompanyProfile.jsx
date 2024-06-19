@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, addDoc, collection} from 'firebase/firestore';
+import CompanyChatBox from '../components/CompanyChatBox';
 import { Link } from 'react-router-dom';
 import CompanyOptionsBar from '../components/CompanyOptionsBar';
 import CompanyPostedJobs from '../routes/CompanyPostedJobs'
@@ -83,8 +84,22 @@ const CompanyProfile = () => {
     e.preventDefault();
     const currentDate = new Date().toLocaleDateString('pt-PT');
     const companyEmail = localStorage.getItem('companyEmail');
+    const keywords = adTitle.toLowerCase().split(' ');
     const form = document.getElementById('createAd')
-    const formData = { adTitle, companyName, chooseCategory, adCity, workPlaceSelected, description, profile, jobTypeDescription, jobSalary, smallDescription,
+    const formData = { 
+      adTitle,
+      adTitleNormalized: adTitle.toLowerCase(),
+      keywords: keywords,
+      companyName, 
+      chooseCategory, 
+      adCity, 
+      workPlaceSelected, 
+      description, 
+      profile, 
+      jobTypeDescription, 
+      jobTypeSelected,
+      jobSalary, 
+      smallDescription,
       CreationDate: currentDate , companyEmail: companyEmail};
     try {
       await addDoc(collection(db, 'Vagas'), formData);
@@ -96,6 +111,7 @@ const CompanyProfile = () => {
       setDescription('');
       setProfile('');
       setJobTypeDescription('');
+      setJobTypeSelected('');
       setJobSalary('');
       setSmallDescription('');
       alert(t("alerts.adPostSuccessfully"));
@@ -190,10 +206,10 @@ const CompanyProfile = () => {
         value={smallDescription}
         placeholder={t("companyProfile.placeholder3")}
         onChange={handleSmallDescriptionChange}
-        maxLength={100} // Defina o limite de caracteres desejado aqui
+        maxLength={50} // Defina o limite de caracteres desejado aqui
         required
       ></textarea>
-      <p>{t("companyProfile.charactersRemaining")}: {100 - smallDescription.length}</p> {/* Exibe o número de caracteres restantes */}
+      <p>{t("companyProfile.charactersRemaining")}: {50 - smallDescription.length}</p> {/* Exibe o número de caracteres restantes */}
     </div>
           <div>
             <legend>{t("companyProfile.label7")}</legend>
@@ -243,6 +259,9 @@ const CompanyProfile = () => {
       </section>
       <section id='myPostedJobs'>
         <CompanyPostedJobs/>
+      </section>
+      <section id='CompanyChatBox'>
+        Coming soon...
       </section>
       <Footer/>
     </div>

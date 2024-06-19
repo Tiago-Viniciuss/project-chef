@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, collection, orderBy, getDocs, query} from 'firebase/firestore';
+import { getFirestore, doc, collection, orderBy, getDocs, query, where} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -25,20 +25,35 @@ const Home = () => {
   const {t} = useTranslation()
 
   const [jobs, setJobs] = useState([]);
+  const [keyword, setKeyword] = useState('');
+
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, 'Vagas'), orderBy('CreationDate', 'asc')));
+        const normalizedKeyword = keyword.toLowerCase();
+        const q = keyword
+          ? query(
+              collection(db, 'Vagas'),
+              where('adTitleNormalized', '>=', normalizedKeyword),
+              where('adTitleNormalized', '<=', normalizedKeyword + '\uf8ff'),
+              orderBy('adTitleNormalized'),
+              orderBy('CreationDate', 'desc')
+            )
+          : query(collection(db, 'Vagas'), orderBy('CreationDate', 'desc'));
+  
+        const querySnapshot = await getDocs(q);
         const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setJobs(jobsData);
       } catch (error) {
         console.error('Erro ao buscar vagas de emprego:', error);
+        alert('sem vagas')
       }
     };
   
     fetchJobs();
-  }, []);
+  }, [keyword]);
+  
   
 
   const navigate = useNavigate();
@@ -47,27 +62,38 @@ const Home = () => {
     navigate(`/job/${jobId}`); // Navega para a página de detalhes da vaga com o ID da vaga
   };
 
-  const handleShare = async (job) => {
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: job.adTitle,
-          SmallDescription: job.smallDescription,
-          url: `${window.location.origin}/job/${job.id}`
-        })
-      } else {
-        alert('A função de compartilhamento não é compatível com o seu navegador')
+
+  useEffect(()=> {
+
+    const timer = setTimeout(()=> {
+      const img = document.getElementById('homeBackground')
+        
+      if(img) {
+        img.style.visibility = 'visible'
+        img.style.left = '0'
+        img.style.transition = 'left 1s'
       }
-    } catch(error) {
-      console.error('Erro ao compartilhar', error)
-    }
-  }
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleKeywordChange = (e) => {
+    setKeyword(e.target.value);
+  };
 
   return (
     <div id='home'>
-        <Header/>
-        <Filters/>
-      <p className='intro'>{t("home.intro")}</p>
+        <Header/> 
+      <section id='homeIntro'>
+        <p className='intro'>{t("home.intro")}</p>
+        <div id='homeBackground'></div>
+      </section>
+      <input
+      type="text"
+      placeholder={t('home.searchBox')}
+      value={keyword}
+      onChange={handleKeywordChange} id='searchBox' className='form-control'
+    />
       <section id='jobsSection'>
       <div className='jobContainer'>
         {jobs.map((job) => (
@@ -81,7 +107,7 @@ const Home = () => {
             <p>{job.jobTypeSelected}</p>
             <p className='city'> {job.adCity}</p>
             <div className='buttons'>
-              <button className='btn btn-dark' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
+              <button className='btn btn-light' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
               <button className='material-symbols-outlined'>bookmark</button>
               {/*<button className='material-symbols-outlined' onClick={() => handleShare(job)}>share</button> */}
             </div>
@@ -89,7 +115,7 @@ const Home = () => {
         ))}
       </div>
       </section>
-      <p className='lorem'>Mais vagas em breve...</p>
+      <p className='lorem'>{t('home.moreSoon')}</p>
         <Footer/>
     </div>
   )

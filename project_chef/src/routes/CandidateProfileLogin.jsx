@@ -8,6 +8,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import Footer from '../components/Footer'
 import {Trans, useTranslation} from 'react-i18next'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -21,6 +22,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 
 const CandidateProfileLogin = () => {
@@ -79,7 +82,19 @@ const CandidateProfileLogin = () => {
         } 
       }, []);
     
+      const loginWithGoogle = async () => {
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
       
+          // Aqui você pode salvar os detalhes do usuário no Firestore ou usar como necessário
+          console.log(user);
+          localStorage.setItem('candidateEmail', user.email);
+          navigateCandidateProfile();
+        } catch (error) {
+          console.error('Erro ao fazer login com Google:', error);
+        }
+      };
 
   return (
     <div id='candidateProfileLoginContainer'>
@@ -99,6 +114,7 @@ const CandidateProfileLogin = () => {
         <Link to={'/forget-candidate-password'}>
           <p className='forgetPassword'>{t("profileLogin.forgetPassword")}</p>
         </Link>
+        <button onClick={loginWithGoogle} className='btn btn-dark'>Login with Google</button>
     </div>
   )
 }

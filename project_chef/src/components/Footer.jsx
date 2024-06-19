@@ -27,7 +27,7 @@ const Footer = () => {
             <button id='closeFooter'  className='material-symbols-outlined' onClick={closeFooter}>expand_more</button>
             <nav id='navFooter'>
             <div className='footerButton'>
-                <Link className='material-symbols-outlined' name='home' id='home' to={'/'}>home</Link>
+                <Link className='material-symbols-outlined' name='home' id='homeFooter' to={'/'}>home</Link>
                 <label htmlFor="home">Início</label>
             </div>
             <div className='footerButton'>

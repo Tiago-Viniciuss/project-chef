@@ -24,13 +24,17 @@ select {
     appearance: none;
 }
 
+
 @media screen and (min-width: 1000px) {
     #languageSelect {
-        width: 50px;
+        width: 35px;
         border: none;
         background-color: transparent;
         color: white;
         cursor: pointer;
+        position: fixed;
+        top: 40px;
+        right: 200px;
     }
     
     #languageSelect option {

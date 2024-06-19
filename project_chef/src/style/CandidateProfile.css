@@ -68,7 +68,7 @@ Form Create Profile
 
 .createAccountTitle {
     margin: auto;
-    margin-top: 50px;
+    margin-top: 70px;
     width: 280px;
     font-size: 2em;
 }
@@ -295,4 +295,24 @@ Edit Candidate Profile
 
 
 /* ----------- CURRICULUM ----------------------------- */
+
+
+
+
+
+@media screen and (min-width: 800px) {
+    #candidateProfileContainer {
+        padding: 100px 25px;
+    }
+
+    #candidateInfo {
+        width: 650px;
+        margin: auto;
+    }
+
+    #editCandidateProfile {
+        width: 650px;
+        margin: auto;
+    }
+}
 

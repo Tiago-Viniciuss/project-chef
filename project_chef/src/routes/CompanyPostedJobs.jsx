@@ -90,7 +90,6 @@ const CompanyPostedJobs = () => {
             <p>{t("myAds.branchActivity")}: {vaga.chooseCategory}</p>
             <p>{t("myAds.description")}: {vaga.smallDescription}</p>
             <p>{t("myAds.workLoad")}: {vaga.jobTypeSelected} </p>
-            <p>{t("myAds.typeWork")}: {vaga.workPlaceSelected} </p>
             <button className='btn btn-danger' onClick={() => openDeleteConfirmation(vaga.id)}>{t("myAds.deleteButton")}</button>
           </li>
         ))}

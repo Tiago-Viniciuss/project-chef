@@ -12,14 +12,17 @@
 
     "home": {
         "applyButton": "Apply",
-        "intro": "Find the best opportunities within the restaurant sector here. From bars and restaurants to people needing a cook for weekend dinner."
+        "intro": "Find the best opportunities within the restaurant sector here",
+        "searchBox": "Search for a job here...",
+        "moreSoon": "More jobs soon..."
     },
 
     "companyButtons": {
         "button1": "Company Profile",
         "button2": "Create Ad",
         "button3": "My Ads",
-        "button4": "Another Button"
+        "button4": "Chat",
+        "button5": "Another button"
     },
 
     "companyProfile": {
@@ -197,6 +200,18 @@
         "salary": "Salary:",
         "applyButton": "Apply to this job",
         "loginButton": "Login to apply"
+    },
+
+    "applyJob": {
+        "title": "You are applying to:",
+        "personalData": "Personal Data",
+        "beContacted": "Be contacted by the employer",
+        "label1": "Full Name",
+        "label2": "Phone",
+        "label3": "Curriculum",
+        "label4": "Resume",
+        "placeholder1": "Attach Curriculum",
+        "button1": "Apply now"
     }
 
 }

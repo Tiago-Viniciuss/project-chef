@@ -1,4 +1,5 @@
 import {Trans, useTranslation} from 'react-i18next'
+import '../style/OptionsBar.css'
 
 
 const CompanyOptionsBar = () => {
@@ -13,6 +14,7 @@ const CompanyOptionsBar = () => {
         const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
         button1.style.backgroundColor = 'white'
         button2.style.backgroundColor = 'black'
@@ -28,6 +30,7 @@ const CompanyOptionsBar = () => {
         companyProfileInfo.style.display = 'flex'
         postedJobs.style.display = 'none'
         createJobs.style.display = 'none'
+        companyChatBox.style.display = 'none'
     }
 
     function changePage2() {
@@ -36,9 +39,10 @@ const CompanyOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
-        const createJobs = document.getElementById('createJobs')
         const companyProfileInfo = document.getElementById('companyProfileInfo')
+        const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
+        const companyChatBox = document.getElementById('CompanyChatBox')
         
 
         button1.style.backgroundColor = 'black'
@@ -55,6 +59,7 @@ const CompanyOptionsBar = () => {
         companyProfileInfo.style.display = 'none'
         postedJobs.style.display = 'none'
         createJobs.style.display = 'block'
+        companyChatBox.style.display = 'none'
     }
 
     function changePage3() {
@@ -63,9 +68,11 @@ const CompanyOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
-        const createJobs = document.getElementById('createJobs')
         const companyProfileInfo = document.getElementById('companyProfileInfo')
+        const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
+        const companyChatBox = document.getElementById('CompanyChatBox')
+
 
         button1.style.backgroundColor = 'black'
         button2.style.backgroundColor = 'black'
@@ -80,6 +87,7 @@ const CompanyOptionsBar = () => {
         companyProfileInfo.style.display = 'none'
         postedJobs.style.display = 'flex'
         createJobs.style.display = 'none'
+        companyChatBox.style.display = 'none'
     }
 
     function changePage4() {
@@ -88,6 +96,10 @@ const CompanyOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
+        const companyProfileInfo = document.getElementById('companyProfileInfo')
+        const createJobs = document.getElementById('createJobs')
+        const postedJobs = document.getElementById('myPostedJobs')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
         button1.style.backgroundColor = 'black'
         button2.style.backgroundColor = 'black'
@@ -99,6 +111,10 @@ const CompanyOptionsBar = () => {
         button3.style.color = 'white'
         button4.style.color = 'black'
         button5.style.color = 'white'
+        companyProfileInfo.style.display = 'none'
+        postedJobs.style.display = 'none'
+        createJobs.style.display = 'none'
+        companyChatBox.style.display = 'flex'
         
     }
 
@@ -108,6 +124,10 @@ const CompanyOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
+        const companyProfileInfo = document.getElementById('companyProfileInfo')
+        const createJobs = document.getElementById('createJobs')
+        const postedJobs = document.getElementById('myPostedJobs')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
         button1.style.backgroundColor = 'black'
         button2.style.backgroundColor = 'black'
@@ -130,7 +150,7 @@ const CompanyOptionsBar = () => {
         <button id='btn2' className='btn' onClick={changePage2}>{t("companyButtons.button2")}</button>
         <button id='btn3' className='btn' onClick={changePage3}>{t("companyButtons.button3")}</button>
         <button id='btn4' className='btn' onClick={changePage4}>{t("companyButtons.button4")}</button>
-        <button id='btn5' className='btn' onClick={changePage5}>{t("companyButtons.button4")}</button>
+        <button id='btn5' className='btn' onClick={changePage5}>{t("companyButtons.button5")}</button>
     </div>
   )
 }

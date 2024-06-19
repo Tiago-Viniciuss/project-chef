@@ -208,7 +208,6 @@ const CandidateProfile = () => {
     <div id="candidateProfileContainer">
       <Header />
       <CandidateOptionsBar />
-      
       <section id="candidateInfo">
         <h1>
           {t("candidateProfile.welcome")} <br /> {userData && userData.CandidateName}!
@@ -231,11 +230,10 @@ const CandidateProfile = () => {
         </div>
         <p>{userData && userData.CandidateProfession}</p>
         <hr />
-        <p>{userData && userData.CandidateEducation}</p>
+        <p>{userData && userData.CandidateSchool}</p>
         <hr />
         <p onClick={leaveProfile} className='btn btn-dark form-control'>{t("candidateProfile.logoutButton")}</p>
       </section>
-
       <section id="editCandidateProfile">
         <h1>{t("candidateProfile.editProfileTitle")}</h1>
         <div className="editingContainer">
@@ -284,19 +282,18 @@ const CandidateProfile = () => {
       <div className='fileInputDiv'>
         <label htmlFor="curriculumInput" className='form-control'>{t("candidateProfile.placeholder2")}</label>
         <span className="material-symbols-outlined"  onClick={handleCurriculumSubmit}>
-                  edit
+          edit
         </span>
       </div>
             <input type="file" name="curriculumInput" id="curriculumInput" onChange={handleCurriculumChange}/>
       </form>
       </section>
-      {/* Display the selected photo temporarily */}
       {photoURL && <div className='confirmPicture'>
         <p>{t("candidateProfile.label1")}</p>
         <img src={photoURL} alt="Selected" id="showPic" />
         <div className='showPicButtons'>
           <span className="material-symbols-outlined"  onClick={handlePhotoSubmit}>
-                  check
+            check
           </span>
           <span onClick={cancelPhotoChange} className="material-symbols-outlined">close</span>
         </div>
