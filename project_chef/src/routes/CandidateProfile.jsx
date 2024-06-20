@@ -230,7 +230,7 @@ const CandidateProfile = () => {
         </div>
         <p>{userData && userData.CandidateProfession}</p>
         <hr />
-        <p>{userData && userData.CandidateSchool}</p>
+        <p>{userData && userData.CandidateEducation}</p>
         <hr />
         <p onClick={leaveProfile} className='btn btn-dark form-control'>{t("candidateProfile.logoutButton")}</p>
       </section>

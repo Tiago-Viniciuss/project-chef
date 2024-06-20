@@ -261,7 +261,7 @@ const CompanyProfile = () => {
         <CompanyPostedJobs/>
       </section>
       <section id='CompanyChatBox'>
-        Coming soon...
+        <CompanyChatBox/>
       </section>
       <Footer/>
     </div>

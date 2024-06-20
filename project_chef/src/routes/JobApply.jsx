@@ -101,6 +101,8 @@ const JobApply = () => {
         try {
           const usersCollectionRef = collection(db, 'Candidates Data');
           const conversationsCollectionRef = collection(db, 'Conversations');
+
+
     
           await updateDoc(doc(usersCollectionRef, candidateEmail), { 
             CandidatePhone: candidatePhone,
@@ -111,7 +113,17 @@ const JobApply = () => {
             Name: userData.CandidateName,
             Message: candidateLetter,
             CandidateEmail: candidateEmail,
-            Timestamp: new Date()
+            Timestamp: new Date(),
+            CompanyEmail: jobDetails.companyEmail,
+            CandidatePhone: candidatePhone,
+            CandidateBirthday: userData.CandidateBirthday,
+            CandidatePhoto: userData.PhotoURL,
+            CandidateProfession: userData.CandidateProfession,
+            CandidateMarital: userData.CandidateMarital,
+            CandidateLanguage: userData.CandidateLanguage,
+            CandidateSchool: userData.CandidateSchool,
+            CandidateEducation: userData.CandidateEducation
+
           });
     
           alert(`Obrigado, ${userData && userData.CandidateName}! A candidatura para ${jobDetails && jobDetails.adTitle} foi feita com sucesso.`);
