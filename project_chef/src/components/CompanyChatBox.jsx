@@ -55,13 +55,13 @@ const CompanyChatBox = () => {
             <p className='messageCandidate'><strong>{message.Name}</strong></p>
             <p className='messageJobTitle'>{message.JobTitle}</p>
             <p className='messageContent'>{message.Message}</p>
-            <p className='messageContent'>{message.CandidateProfession}</p>
-            <p className='messageContent'>{message.CandidatePhone}</p>
-            <p className='messageContent'>{message.CandidateBirthday}</p>
-            <p className='messageContent'>{message.CandidateLanguage}</p>
-            <p className='messageContent'>{message.CandidateEducation}</p>
-            <p className='messageContent'>{message.CandidateMarital}</p>
-            <p className='messageContent'>{message.CandidateSchool}</p>
+            <p className='messageDetails'>Atualmente sou {message.CandidateProfession}</p>
+            <p className='messageDetails'>O meu contacto é {message.CandidatePhone}</p>
+            <p className='messageDetails'>Eu nasci em {message.CandidateBirthday}</p>
+            <p className='messageDetails'>Falo {message.CandidateLanguage}</p>
+            <p className='messageDetails'>Estudei {message.CandidateEducation}</p>
+            <p className='messageDetails'>Atualmente sou {message.CandidateMarital}</p>
+            <p className='messageDetails'>Possuo {message.CandidateSchool}</p>
           </div>
         ))
       ) : (
