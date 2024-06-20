@@ -121,7 +121,6 @@ const JobApply = () => {
             CandidateProfession: userData.CandidateProfession,
             CandidateMarital: userData.CandidateMarital,
             CandidateLanguage: userData.CandidateLanguage,
-            CandidateSchool: userData.CandidateSchool,
             CandidateEducation: userData.CandidateEducation
 
           });
