@@ -27,16 +27,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="create-ad" element={<CreateAd />} />
-          <Route path="/company-profile-login" element={<CompanyProfileLogin />} />
-          <Route path="/candidate-profile-login" element={<CandidateProfileLogin />} />
-          <Route path="/candidate-profile" element={<CandidateProfile />} />
-          <Route path="/create-profile" element={<CreateProfile />} />
-          <Route path="/create-company-profile" element={<CreateCompanyProfile />} />
-          <Route path="/company-profile" element={<CompanyProfile />} />
-          <Route path="/forget-company-password" element={<ForgetCompanyPassword />} />
-          <Route path="/forget-candidate-password" element={<ForgetCandidatePassword />} />
-          <Route path="/edit-candidate-profile" element={<EditCandidateProfile />} />
-          <Route path="/posted-jobs" element={<CompanyPostedJobs />} />
+          <Route path="company-profile-login" element={<CompanyProfileLogin />} />
+          <Route path="candidate-profile-login" element={<CandidateProfileLogin />} />
+          <Route path="candidate-profile" element={<CandidateProfile />} />
+          <Route path="create-profile" element={<CreateProfile />} />
+          <Route path="create-company-profile" element={<CreateCompanyProfile />} />
+          <Route path="company-profile" element={<CompanyProfile />} />
+          <Route path="forget-company-password" element={<ForgetCompanyPassword />} />
+          <Route path="forget-candidate-password" element={<ForgetCandidatePassword />} />
+          <Route path="edit-candidate-profile" element={<EditCandidateProfile />} />
+          <Route path="posted-jobs" element={<CompanyPostedJobs />} />
           <Route path="job/:id" element={<JobDetails />} /> {/* Rota para detalhes da vaga */}
         </Route>
         <Route path="job-apply/:id" element={<JobApply />} />
