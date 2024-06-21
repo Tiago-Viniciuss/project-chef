@@ -56,7 +56,7 @@ const CompanyChatBox = () => {
             <p className='messageJobTitle'>{message.JobTitle}</p>
             <p className='messageContent'>{message.Message}</p>
             <p className='messageDetails'>Atualmente sou {message.CandidateProfession}</p>
-            <p className='messageDetails'>O meu contacto é <a href="#">{message.CandidatePhone}</a></p>
+            <p className='messageDetails'>O meu contacto é <a href={`tel:${message.CandidatePhone}`}>{message.CandidatePhone}</a></p>
             <p className='messageDetails'>Eu nasci em {message.CandidateBirthday}</p>
             <p className='messageDetails'>Falo {message.CandidateLanguage}</p>
             <p className='messageDetails'>Estudei {message.CandidateEducation}</p>
