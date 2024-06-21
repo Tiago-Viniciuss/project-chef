@@ -76,17 +76,22 @@ img {
     left: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    align-items: center; /* Fundo semi-transparente */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     z-index: 10; /* Garantir que está acima dos outros elementos */
     pointer-events: auto; /* Permitir interações dentro do showPhoto */
+}
+
+.no-backdrop-filter #showPhoto {
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo mais escuro para fallback */
 }
 
 #showPhoto img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    box-shadow: 2px 2px 150px black;
+    box-shadow: 10px 10px 50px black;
     z-index: 15; /* Garantir que está acima do fundo semi-transparente */
 }
 
