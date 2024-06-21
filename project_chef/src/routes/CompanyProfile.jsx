@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, addDoc, collection} from 'firebase/firestore';
-import CompanyChatBox from '../components/CompanyChatBox';
+import Appliers from '../components/Appliers';
 import { Link } from 'react-router-dom';
 import CompanyOptionsBar from '../components/CompanyOptionsBar';
 import CompanyPostedJobs from '../routes/CompanyPostedJobs'
@@ -260,8 +260,8 @@ const CompanyProfile = () => {
       <section id='myPostedJobs'>
         <CompanyPostedJobs/>
       </section>
-      <section id='CompanyChatBox'>
-        <CompanyChatBox/>
+      <section id='appliers'>
+        <Appliers/>
       </section>
       <Footer/>
     </div>

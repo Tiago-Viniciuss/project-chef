@@ -49,10 +49,7 @@ const CompanyPostedJobs = () => {
   }, [db]);
 
   // Função para exibir detalhes da vaga
-  const handleVagaClick = (id) => {
-    // Navegar para a página de detalhes da vaga com o ID da vaga
-    navigate(`/job/${id}`);
-  };
+  
 
   const openDeleteConfirmation = (id) => {
     setDeleteConfirmation(id);
@@ -85,7 +82,7 @@ const CompanyPostedJobs = () => {
       <ul id='postedJobContainer'>
         {companyVagas.map((vaga) => (
           <li key={vaga.id} className='postedJob'>
-            <h2 onClick={() => handleVagaClick(vaga.id)}>{vaga.adTitle}</h2>
+            <h2>{vaga.adTitle}</h2>
             <p>{t("myAds.location")}: {vaga.adCity}</p>
             <p>{t("myAds.branchActivity")}: {vaga.chooseCategory}</p>
             <p>{t("myAds.description")}: {vaga.smallDescription}</p>
