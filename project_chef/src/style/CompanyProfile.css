@@ -88,18 +88,20 @@ Form Login Profile
   }
 
 
+
   /*
   
   --------------------- Company Profile -------------------
   
   */
 
-  #companyProfilePicture {
+  .companyProfilePicture {
     margin: auto;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     border: 1px solid black;
+    background-image: url('/public/images/person.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

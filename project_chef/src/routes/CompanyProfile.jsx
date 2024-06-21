@@ -137,7 +137,7 @@ const CompanyProfile = () => {
       <Header />
       <CompanyOptionsBar/>
       <section id='companyProfileInfo'>
-        <img id="companyProfilePicture" src='/public/images/person.png' alt="" />
+        <div className='companyProfilePicture'></div>
         <hr />
         <h1 id='companyTitle'>{userData && userData.CompanyTitle}</h1>
         <h3 id='companyCategory'>{userData && userData.CompanyCategory}</h3>
