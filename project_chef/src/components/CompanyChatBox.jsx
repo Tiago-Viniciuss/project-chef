@@ -50,6 +50,7 @@ const CompanyChatBox = () => {
   const closePhoto = () => {
     setShowPhoto(false)
   }
+  
 
   return (
     <div>
@@ -81,8 +82,12 @@ const CompanyChatBox = () => {
           <p>Nenhuma conversa encontrada.</p>
         )}
       </section>
-      <div id='showPhoto'>
-        {showPhoto && <div><span className='material-symbols-outlined' onClick={closePhoto}>close</span><img src={showPhoto} alt="Candidate" /></div> }
+        <div id='showPhoto' style={{ display: showPhoto ? 'flex' : 'none' }}  onClick={closePhoto}>
+        {showPhoto && (
+      <div>
+        <img src={showPhoto} alt="Candidate" id='profilePhoto'/>
+      </div>
+      )}
       </div>
     </div>
   );
