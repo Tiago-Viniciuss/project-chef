@@ -82,6 +82,7 @@ const Home = () => {
   const handleFilter = (e) => {
     setActiveCategory('')
     setClassChange('');
+    setKeyword('');
   }
 
   return (
