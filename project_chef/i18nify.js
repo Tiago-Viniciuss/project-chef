@@ -24,7 +24,7 @@ i18n
             escapeValue: false,
         },
         react: {
-            wait: true,
+            useSuspense: true,
         },
     })
 

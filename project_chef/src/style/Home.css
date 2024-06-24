@@ -142,8 +142,13 @@
 }
 
 .buttonColor.active {
-  background-color: #000000; /* Azul */
+  background-color: #000000;
   color: #fff;
+}
+
+.buttonAll:focus {
+  background-color: black;
+  color: white;
 }
 
 .intro {

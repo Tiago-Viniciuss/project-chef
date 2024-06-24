@@ -65,7 +65,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleApply = (jobId) => {
-    navigate(`/job/${jobId}`); // Navega para a página de detalhes da vaga com o ID da vaga
+    navigate(`/job/${jobId}`);
   };
 
   const handleKeywordChange = (e) => {
@@ -78,6 +78,11 @@ const Home = () => {
     setActiveCategory(category);
     setKeyword('');
   };
+
+  const handleFilter = (e) => {
+    setActiveCategory('')
+    setClassChange('');
+  }
 
   return (
     <div id='home'>
@@ -105,8 +110,9 @@ const Home = () => {
           >
             {t(`companyProfile.${category}`)}
           </button>
-        ))}
+        ))} <button className='btn buttonColor buttonAll' onClick={handleFilter}>{t('companyProfile.All')}</button>
       </section>
+      
       <section id='jobsSection'>
         <div className='jobContainer'>
           {jobs.map((job) => (
