@@ -86,7 +86,9 @@ const Home = () => {
         <Header/> 
       <section id='homeIntro'>
         <p className='intro'>{t("home.intro")}</p>
+        {/*
         <div id='homeBackground'></div>
+        */}
       </section>
       <input
       type="text"

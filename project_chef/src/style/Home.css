@@ -21,6 +21,10 @@
     height: 80px;
 }
 
+#homeIntro {
+  margin-top: 40px;
+}
+
 #brandTitle {
     color: white;
     font-size: 1.2em;
