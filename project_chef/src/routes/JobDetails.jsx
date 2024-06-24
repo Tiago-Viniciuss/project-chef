@@ -74,7 +74,6 @@ const JobDetails = () => {
          <ul>
              <li><span className='material-symbols-outlined'>calendar_today</span> {jobDetails.CreationDate}</li>
               <li><span className='material-symbols-outlined'>location_on</span> {jobDetails.adCity}</li>
-              <li><span className='material-symbols-outlined' >work</span> {jobDetails.chooseCategory}</li>
               <li><span className='material-symbols-outlined'>apartment</span> {jobDetails.companyName}</li>
               <li><span className='material-symbols-outlined'>schedule</span>  {jobDetails.jobTypeSelected}</li>
          </ul>

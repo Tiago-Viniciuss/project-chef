@@ -85,11 +85,13 @@ const CompanyProfile = () => {
     const currentDate = new Date().toLocaleDateString('pt-PT');
     const companyEmail = localStorage.getItem('companyEmail');
     const keywords = adTitle.toLowerCase().split(' ');
+    const sectorKeywords = chooseCategory.split(' ');
     const form = document.getElementById('createAd')
     const formData = { 
       adTitle,
       adTitleNormalized: adTitle.toLowerCase(),
       keywords: keywords,
+      chooseCategoryKeywords: sectorKeywords,
       companyName, 
       chooseCategory, 
       adCity, 
@@ -163,17 +165,13 @@ const CompanyProfile = () => {
           <div>
             <label htmlFor="chooseCategory">{t("companyProfile.label3")}</label> <br />
             <select name="chooseCategory" id="chooseCategory" className='form-control' value={chooseCategory} onChange={(e) => setChooseCategory(e.target.value)} required>
-              <option value="" disabled>-- {t("companyProfile.branch1")} --</option>
-              <option value={t("companyProfile.branch2")}>{t("companyProfile.branch2")}</option>
-              <option value={t("companyProfile.branch3")}>{t("companyProfile.branch3")}</option>
-              <option value={t("companyProfile.branch4")}>{t("companyProfile.branch4")}</option>
-              <option value={t("companyProfile.branch5")}>{t("companyProfile.branch5")}</option>
-              <option value={t("companyProfile.branch6")}>{t("companyProfile.branch6")}</option>
-              <option value={t("companyProfile.branch7")}>{t("companyProfile.branch7")}</option>
-              <option value={t("companyProfile.branch8")}>{t("companyProfile.branch8")}</option>
-              <option value={t("companyProfile.branch9")}>{t("companyProfile.branch9")}</option>
-              <option value={t("companyProfile.branch10")}>{t("companyProfile.branch10")}</option>
-              <option value={t("companyProfile.branch11")}>{t("companyProfile.branch11")}</option>
+              <option value="" disabled>-- {t("companyProfile.branch1")} --</option> 
+              <option value='Cozinha Kitchen'>{t("companyProfile.Kitchen")}</option>
+              <option value='Bar'>{t("companyProfile.Bar")}</option>
+              <option value='Sala DiningRoom'>{t("companyProfile.DiningRoom")}</option>
+              <option value='Administração Adm'>{t("companyProfile.Adm")}</option>
+              <option value='Delivery Entrega'>{t("companyProfile.Delivery")}</option>
+              <option value='Freelancer'>{t("companyProfile.Freelancer")}</option>
             </select>
           </div>
           <div>
