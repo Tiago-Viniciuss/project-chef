@@ -103,7 +103,7 @@ const Home = () => {
         className='form-control'
       />
       <section id='filterSection'>
-        {['Kitchen', 'Bar', 'DiningRoom', 'Adm', 'Delivery', 'Freelancer'].map((category) => (
+        {['Kitchen', 'Bar', , 'Adm','DiningRoom', 'Delivery', 'Freelancer'].map((category) => (
           <button
             key={category}
             className={`btn buttonColor ${activeCategory === category ? 'active' : ''}`}
