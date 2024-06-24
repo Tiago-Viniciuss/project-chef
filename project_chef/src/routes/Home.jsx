@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, collection, orderBy, getDocs, query, where} from 'firebase/firestore';
+import FiltersSection from '../components/FiltersSection'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -96,6 +97,7 @@ const Home = () => {
       value={keyword}
       onChange={handleKeywordChange} id='searchBox' className='form-control'
     />
+    <FiltersSection/>
       <section id='jobsSection'>
       <div className='jobContainer'>
         {jobs.map((job) => (

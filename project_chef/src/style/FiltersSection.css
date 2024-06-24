@@ -1,0 +1,20 @@
+#filterSection {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row ;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+#filterSection button {
+    background-color: black;
+    color: white; 
+}
+
+#filterSection button:focus {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
