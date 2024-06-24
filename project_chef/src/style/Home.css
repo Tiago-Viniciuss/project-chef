@@ -126,6 +126,26 @@
   margin-bottom: 25px;
 }
 
+#filterSection {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row ;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.buttonColor {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.buttonColor.active {
+  background-color: #000000; /* Azul */
+  color: #fff;
+}
+
 .intro {
   padding: 45px 25px 25px 25px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

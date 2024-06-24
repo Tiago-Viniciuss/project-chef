@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, collection, orderBy, getDocs, query, where} from 'firebase/firestore';
-import FiltersSection from '../components/FiltersSection'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -27,33 +26,52 @@ const Home = () => {
 
   const [jobs, setJobs] = useState([]);
   const [keyword, setKeyword] = useState('');
+  const [classChange, setClassChange] = useState('')
+  const [activeCategory, setActiveCategory] = useState('');
+
 
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         const normalizedKeyword = keyword.toLowerCase();
-        const q = keyword
-          ? query(
-              collection(db, 'Vagas'),
-              where('adTitleNormalized', '>=', normalizedKeyword),
-              where('adTitleNormalized', '<=', normalizedKeyword + '\uf8ff'),
-              orderBy('adTitleNormalized'),
-              orderBy('CreationDate', 'desc')
-            )
-          : query(collection(db, 'Vagas'), orderBy('CreationDate', 'desc'));
+        let q;
+  
+        if (keyword) {
+          q = query(
+            collection(db, 'Vagas'),
+            where('adTitleNormalized', '>=', normalizedKeyword),
+            where('adTitleNormalized', '<=', normalizedKeyword + '\uf8ff'),
+            orderBy('adTitleNormalized'),
+            orderBy('CreationDate', 'desc')
+          );
+        } else if (classChange) {
+          console.log(`Filtering by category: ${classChange}`);
+          q = query(
+            collection(db, 'Vagas'),
+            where('chooseCategory', '==', classChange),
+            orderBy('CreationDate', 'desc')
+          );
+        } else {
+          q = query(collection(db, 'Vagas'), orderBy('CreationDate', 'desc'));
+        }
+  
+        console.log('Query: ', q);
   
         const querySnapshot = await getDocs(q);
         const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setJobs(jobsData);
       } catch (error) {
-        console.error('Erro ao buscar vagas de emprego:', error);
-        alert('sem vagas')
+        console.error('Erro ao buscar vagas de emprego:', error.message);
+        console.error('Detalhes do erro:', error);
+        alert('Erro ao buscar vagas de emprego: ' + error.message);
       }
     };
   
     fetchJobs();
-  }, [keyword]);
+  }, [keyword, classChange]);
+  
+  
   
   
 
@@ -82,6 +100,11 @@ const Home = () => {
     setKeyword(e.target.value);
   };
 
+  const handleCategoryClick = (category) => {
+    setClassChange(category);
+    setActiveCategory(category);
+  };
+
   return (
     <div id='home'>
         <Header/> 
@@ -97,13 +120,24 @@ const Home = () => {
       value={keyword}
       onChange={handleKeywordChange} id='searchBox' className='form-control'
     />
-    <FiltersSection/>
+    <section id='filterSection'>
+  {['Restaurantes', 'Pastelarias', 'Padarias', 'Bares e Pubs', 'Organização de Eventos', 'Hotel ou Hostel', 'Restaurante Delivery', 'Refeição em Casa', 'Cozinheiro Viajante', 'Outros'].map((category) => (
+    <button
+      key={category}
+      className={`btn buttonColor ${activeCategory === category ? 'active' : ''}`}
+      onClick={() => handleCategoryClick(category)}
+    >
+      {category}
+    </button>
+  ))}
+</section>
       <section id='jobsSection'>
       <div className='jobContainer'>
         {jobs.map((job) => (
           <div key={job.id} className='jobBody'>
             <h3>{job.adTitle}</h3>
             <p>{job.companyName}</p>
+            <p>{job.chooseCategory}</p>
             <hr />
             <p className='description'>{job.smallDescription}</p>
             <hr />
