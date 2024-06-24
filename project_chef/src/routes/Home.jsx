@@ -94,26 +94,27 @@ const Home = () => {
         <div id='homeBackground'></div>
         */}
       </section>
-      <input
-        type="text"
-        placeholder={t('home.searchBox')}
-        value={keyword}
-        onChange={handleKeywordChange}
-        id='searchBox'
-        className='form-control'
-      />
-      <section id='filterSection'>
-        {['Kitchen', 'Bar', , 'Adm','DiningRoom', 'Delivery', 'Freelancer'].map((category) => (
-          <button
-            key={category}
-            className={`btn buttonColor ${activeCategory === category ? 'active' : ''}`}
-            onClick={() => handleCategoryClick(category)}
-          >
-            {t(`companyProfile.${category}`)}
-          </button>
-        ))} <button className='btn buttonColor buttonAll' onClick={handleFilter}>{t('companyProfile.All')}</button>
+      <section id='searchContainer'>
+        <input
+          type="text"
+          placeholder={t('home.searchBox')}
+          value={keyword}
+          onChange={handleKeywordChange}
+          id='searchBox'
+          className='form-control'
+        />
+        <section id='filterSection'>
+          {['Kitchen', 'Bar', , 'Adm','DiningRoom', 'Delivery', 'Freelancer'].map((category) => (
+            <button
+              key={category}
+              className={`btn buttonColor ${activeCategory === category ? 'active' : ''}`}
+              onClick={() => handleCategoryClick(category)}
+            >
+              {t(`companyProfile.${category}`)}
+            </button>
+          ))} <button className='btn buttonColor buttonAll' onClick={handleFilter}>{t('companyProfile.All')}</button>
+        </section>
       </section>
-      
       <section id='jobsSection'>
         <div className='jobContainer'>
           {jobs.map((job) => (

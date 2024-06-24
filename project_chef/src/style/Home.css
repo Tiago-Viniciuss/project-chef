@@ -1,12 +1,12 @@
 #home {
-  background-color: rgb(246, 246, 246);
+  background-color: #f0f0f0;
   padding-top: 25px;
 }
 
 #header {
     width: 100vw;
     height: 50px;
-    background-color: black;
+    background-color:  rgb(41, 57, 107);
     position: fixed;
     top: 0;
     left: 0;
@@ -84,7 +84,7 @@
 #menuNavigation {
     width: 0px;
     height: 100%;
-    background-color: black;
+    background-color: #508CA4;
     padding-top: 150px;
     position: fixed;
     top: 0;
@@ -118,6 +118,14 @@
     font-weight: 500;
 }
 
+#searchContainer {
+  width: 95%;
+  margin: auto;
+  background-color: #EE6352;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 70px;
+}
 
 #searchBox {
   width: 250px;
@@ -139,15 +147,21 @@
 .buttonColor {
   background-color: #f0f0f0;
   color: #000;
+  font-size: 0.8em;
 }
 
 .buttonColor.active {
-  background-color: #000000;
+  background-color: rgb(41, 57, 107);
+  color: #fff;
+}
+
+.buttonColor:hover {
+  background-color: rgb(41, 57, 107);
   color: #fff;
 }
 
 .buttonAll:focus {
-  background-color: black;
+  background-color: rgb(41, 57, 107);
   color: white;
 }
 
@@ -295,7 +309,7 @@
   }
 
   .jobBody {
-    background-color: rgb(0, 0, 0);
+    background-color:  rgb(41, 57, 107);
     color: white;
     padding: 25px;
     width: 80%;
@@ -343,6 +357,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .buttons button:hover {
+    background-color: #FC440F;
+    color: white;
   }
 
   hr {
