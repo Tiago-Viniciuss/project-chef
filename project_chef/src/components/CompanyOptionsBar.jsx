@@ -14,7 +14,7 @@ const CompanyOptionsBar = () => {
         const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
-        const appliers = document.getElementById('appliers')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
         button1.style.backgroundColor = 'white'
         button2.style.backgroundColor = 'black'
@@ -30,7 +30,7 @@ const CompanyOptionsBar = () => {
         companyProfileInfo.style.display = 'flex'
         postedJobs.style.display = 'none'
         createJobs.style.display = 'none'
-        appliers.style.display = 'none'
+        companyChatBox.style.display = 'none'
     }
 
     function changePage2() {
@@ -39,9 +39,10 @@ const CompanyOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
+        const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
-        const appliers = document.getElementById('appliers')
+        const companyChatBox = document.getElementById('CompanyChatBox')
         
 
         button1.style.backgroundColor = 'black'
@@ -55,9 +56,10 @@ const CompanyOptionsBar = () => {
         button4.style.color = 'white'
         button5.style.color = 'white'
 
+        companyProfileInfo.style.display = 'none'
         postedJobs.style.display = 'none'
         createJobs.style.display = 'block'
-        appliers.style.display = 'none'
+        companyChatBox.style.display = 'none'
     }
 
     function changePage3() {
@@ -69,7 +71,7 @@ const CompanyOptionsBar = () => {
         const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
-        const appliers = document.getElementById('appliers')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
 
         button1.style.backgroundColor = 'black'
@@ -85,7 +87,7 @@ const CompanyOptionsBar = () => {
         companyProfileInfo.style.display = 'none'
         postedJobs.style.display = 'flex'
         createJobs.style.display = 'none'
-        appliers.style.display = 'none'
+        companyChatBox.style.display = 'none'
     }
 
     function changePage4() {
@@ -97,7 +99,7 @@ const CompanyOptionsBar = () => {
         const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
-        const appliers = document.getElementById('appliers')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
         button1.style.backgroundColor = 'black'
         button2.style.backgroundColor = 'black'
@@ -112,7 +114,7 @@ const CompanyOptionsBar = () => {
         companyProfileInfo.style.display = 'none'
         postedJobs.style.display = 'none'
         createJobs.style.display = 'none'
-        appliers.style.display = 'flex'
+        companyChatBox.style.display = 'flex'
         
     }
 
@@ -125,7 +127,7 @@ const CompanyOptionsBar = () => {
         const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
-        const appliers = document.getElementById('appliers')
+        const companyChatBox = document.getElementById('CompanyChatBox')
 
         button1.style.backgroundColor = 'black'
         button2.style.backgroundColor = 'black'
