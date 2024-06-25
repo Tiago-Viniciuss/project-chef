@@ -74,6 +74,17 @@ Candidate Profile
 
 */
 
+#photoContainer label {
+    margin-left: 100px;
+    position: absolute;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: 800;
+    border-radius: 50%;
+    padding: 3px;
+    cursor: pointer;
+}
+
 #candidateInfo {
     display: block;
 }
@@ -93,7 +104,7 @@ Candidate Profile
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 2px solid black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -105,7 +116,6 @@ Candidate Profile
     margin: 5px auto;
     flex-direction: column;
     gap: 5px;
-
     display: none;
 }
 
@@ -152,81 +162,25 @@ Edit Candidate Profile
 }
 
 #editCandidateProfile {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 25px;
 }
 
-
-#candidateOptionsBar #btn1 {
-    color: black;
-    background-color: white;
-    
+#editCandidateProfile input {
+    border: none;
+    border-bottom: 1px solid rgb(184, 183, 183);
 }
 
-#editCandidateProfile form input {
-    width: 80%;
-    margin-bottom: 10px;
+#editCandidateProfile input:focus {
+    outline: none;
+    border-bottom: 1px solid black;
+    font-weight: bold;
 }
 
-#saveDataForm {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.editCandidateProfileContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 5px;
-}
-
-.editCandidateProfileContainer span {
-    margin-right: 5px;
-}
-
-.editingContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-}
-
-.editInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#editNameButtons {
-    display: none;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#editNameButtons.active {
-    display: flex;
-}
-
-#editNameButtons button {
-    width: 45%;
-}
-
-#editCityButtons {
-    display: none;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#editCityButtons.active {
-    display: flex;
-}
-
-#editCityButtons button {
-    width: 45%;
+#editCandidateProfile button {
+    background-color: rgb(41, 57, 107);
 }
 
 .fileInputDiv {
@@ -248,15 +202,24 @@ Edit Candidate Profile
 }
 
 .confirmPicture {
+    width: 80%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: black;
-    color: white;
+    background-color: rgba(167, 167, 167, 0.644);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
     padding: 10px;
     border-radius: 5px;
+    z-index: 100;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 #showPic {
@@ -271,15 +234,7 @@ Edit Candidate Profile
     display: flex;
     justify-content: space-around;
     gap: 10px;
-}
-
-.showCV {
-    width: 200px;
-    height: 300px;
-    margin: auto;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    cursor: pointer;
 }
 
 

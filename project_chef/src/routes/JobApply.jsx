@@ -183,11 +183,6 @@ const JobApply = () => {
                 <p className='form-control'>{userData && userData.CandidateEmail}</p>
                 <span>{t('applyJob.label2')}</span>
                 <input type="number" name="candidatePhone" id="candidatePhone" className='form-control' placeholder='Insira seu número de telemóvel' required value={candidatePhone} onChange={handleCandidatePhone}/>
-                <span>{t('applyJob.label3')}</span>
-                <div className='candidateCV'>
-                    <label className='form-control' htmlFor="candidateCV">{t('applyJob.placeholder1')}</label>
-                    <input type="file" name="candidateCV" id="candidateCV" />
-                </div>
                 <span>{t('applyJob.label4')}</span>
                 <textarea name="candidateLetter" id="candidateLetter" cols="30" rows="10" className='form-control' onChange={handleCandidateLetter} value={candidateLetter}></textarea>
                 <button type='submit' className='btn btn-dark'>{t('applyJob.button1')}</button>

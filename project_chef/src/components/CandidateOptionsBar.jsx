@@ -12,7 +12,6 @@ const CandidateOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
-        const editProfile = document.getElementById('editCandidateProfile')
         const candidateInfo = document.getElementById('candidateInfo')
 
         button1.style.backgroundColor = 'white'
@@ -26,7 +25,6 @@ const CandidateOptionsBar = () => {
         button4.style.color = 'white'
         button5.style.color = 'white'
         candidateInfo.style.display = 'block'
-        editProfile.style.display = 'none'
     }
 
     function changePage2() {
@@ -36,7 +34,6 @@ const CandidateOptionsBar = () => {
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
         const editProfile = document.getElementById('editCandidateProfile')
-        const candidateInfo = document.getElementById('candidateInfo')
 
         button1.style.backgroundColor = 'black'
         button2.style.backgroundColor = 'white'
@@ -49,7 +46,6 @@ const CandidateOptionsBar = () => {
         button4.style.color = 'white'
         button5.style.color = 'white'
         candidateInfo.style.display = 'none'
-        editProfile.style.display = 'flex'
     }
 
     function changePage3() {

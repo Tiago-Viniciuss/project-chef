@@ -39,7 +39,6 @@ const CompanyOptionsBar = () => {
         const button3 = document.getElementById('btn3')
         const button2 = document.getElementById('btn2')
         const button1 = document.getElementById('btn1')
-        const companyProfileInfo = document.getElementById('companyProfileInfo')
         const createJobs = document.getElementById('createJobs')
         const postedJobs = document.getElementById('myPostedJobs')
         const appliers = document.getElementById('appliers')
@@ -56,7 +55,6 @@ const CompanyOptionsBar = () => {
         button4.style.color = 'white'
         button5.style.color = 'white'
 
-        companyProfileInfo.style.display = 'none'
         postedJobs.style.display = 'none'
         createJobs.style.display = 'block'
         appliers.style.display = 'none'

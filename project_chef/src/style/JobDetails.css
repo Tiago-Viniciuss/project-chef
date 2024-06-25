@@ -58,3 +58,11 @@ ul {
 #detailsComplement p {
     margin: 0px;
 }
+
+a {
+    color: black;
+}
+
+#detailsComplement button {
+    background-color: rgb(41, 57, 107);
+}

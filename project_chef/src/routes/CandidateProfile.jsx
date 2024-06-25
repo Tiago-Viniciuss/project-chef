@@ -23,20 +23,20 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 const CandidateProfile = () => {
-
-  const {t} = useTranslation()
-
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
   const [userData, setUserData] = useState(null);
-  const [newCandidateName, setNewCandidateName] = useState('');
-  const [newCandidateCity, setNewCandidateCity] = useState('');
-  const [curriculumFile, setCurriculumFile] = useState(null);
-
+  const [candidateName, setCandidateName] = useState('');
+  const [candidateBirthday, setCandidateBirthday] = useState('');
+  const [candidatePhone, setCandidatePhone] = useState('');
+  const [candidateGender, setCandidateGender] = useState('');
+  const [candidateProfession, setCandidateProfession] = useState('');
+  const [candidateEducation, setCandidateEducation] = useState('');
+  const [candidateCity, setCandidateCity] = useState('');
   const [photoFile, setPhotoFile] = useState(null);
-
-  const [photoURL, setPhotoURL] = useState(null); // Add state to store the temporary URL
+  const [photoURL, setPhotoURL] = useState(null);
 
   const fetchUserData = async () => {
     const candidateEmail = localStorage.getItem('candidateEmail');
@@ -44,7 +44,15 @@ const CandidateProfile = () => {
       const userDocRef = doc(db, 'Candidates Data', candidateEmail);
       const userDocSnap = await getDoc(userDocRef);
       if (userDocSnap.exists()) {
-        setUserData(userDocSnap.data());
+        const data = userDocSnap.data();
+        setUserData(data);
+        setCandidateName(data.CandidateName); 
+        setCandidateBirthday(data.CandidateBirthday)
+        setCandidatePhone(data.CandidatePhone)
+        setCandidateCity(data.CandidateCity)
+        setCandidateGender(data.CandidateGender)
+        setCandidateProfession(data.CandidateProfession)
+        setCandidateEducation(data.CandidateEducation)
       } else {
         setUserData(null);
       }
@@ -55,49 +63,36 @@ const CandidateProfile = () => {
 
   useEffect(() => {
     fetchUserData();
-  }, [db]);
+  }, []);
 
-  const updateName = async () => {
-    if (newCandidateName.trim() !== '') {
-      try {
-        const candidateEmail = localStorage.getItem('candidateEmail');
-        const userDocRef = doc(db, 'Candidates Data', candidateEmail);
-        await updateDoc(userDocRef, {
-          CandidateName: newCandidateName,
-        });
-        setUserData(prevUserData => ({
-          ...prevUserData,
-          CandidateName: newCandidateName,
-        }));
-        console.log('Nome atualizado com sucesso!');
-      } catch (error) {
-        console.error('Erro ao atualizar o nome:', error);
-      }
-    } else {
-      alert('Você não digitou nada!');
-    }
+  const handleNameChange = (e) => {
+    setCandidateName(e.target.value);
   };
 
-  const updateCity = async () => {
-    if (newCandidateCity.trim() !== '') {
-      try {
-        const candidateEmail = localStorage.getItem('candidateEmail');
-        const userDocRef = doc(db, 'Candidates Data', candidateEmail);
-        await updateDoc(userDocRef, {
-          CandidateCity: newCandidateCity,
-        });
-        setUserData(prevUserData => ({
-          ...prevUserData,
-          CandidateCity: newCandidateCity,
-        }));
-        console.log('Cidade atualizada com sucesso!');
-      } catch (error) {
-        console.error('Erro ao atualizar a cidade:', error);
-      }
-    } else {
-      alert('Você não digitou nada!');
-    }
+  const handleBirthdayChange = (e) => {
+    setCandidateBirthday(e.target.value);
   };
+
+  const handlePhoneChange = (e) => {
+    setCandidatePhone(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setCandidateCity(e.target.value);
+  };
+
+  const handleGenderChange = (e) => {
+    setCandidateGender(e.target.value);
+  };
+
+  const handleProfessionChange = (e) => {
+    setCandidateProfession(e.target.value);
+  };
+
+  const handleEducationChange = (e) => {
+    setCandidateEducation(e.target.value);
+  };
+
 
   const navigateToHome = () => {
     navigate('/');
@@ -108,93 +103,32 @@ const CandidateProfile = () => {
     navigateToHome();
   };
 
-  const handleCurriculumSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Verifique se um arquivo foi selecionado
-    if (curriculumFile) {
-      try {
-        const candidateEmail = localStorage.getItem('candidateEmail');
-        
-        // Crie uma referência no Firebase Storage com um nome único para o currículo
-        const curriculumRef = ref(storage, `curriculums/${candidateEmail}-${curriculumFile.name}`);
-        
-        // Faça o upload do arquivo para o Firebase Storage
-        const uploadTask = uploadBytesResumable(curriculumRef, curriculumFile);
-        
-        // Aguarde o término do upload
-        await uploadTask;
-        
-        // Obtenha a URL de download do currículo
-        const downloadURL = await getDownloadURL(curriculumRef);
-        
-        // Atualize o perfil do candidato com a URL do currículo no Firestore
-        const userDocRef = doc(db, 'Candidates Data', candidateEmail);
-        await updateDoc(userDocRef, {
-          CurriculumURL: downloadURL,
-        });
-        
-        // Exiba uma mensagem de sucesso ou faça qualquer outra ação necessária
-        console.log('Currículo enviado com sucesso!');
-        
-        alert(t("candidateProfile.alert2"))
-      } catch (error) {
-        console.error('Erro ao enviar o currículo:', error);
-      }
-    } else {
-      alert('Selecione um arquivo PDF para enviar.');
-    }
-  };
-  
-  // Função para lidar com a seleção do arquivo PDF
-  const handleCurriculumChange = (e) => {
-    const file = e.target.files[0];
-    setCurriculumFile(file);
-  };
-  
-  // Função para lidar com a seleção do arquivo de foto
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     setPhotoFile(file);
-
-    // Create a temporary URL for the selected photo
     setPhotoURL(URL.createObjectURL(file));
   };
 
-  const cancelPhotoChange = (e) => {
-    setPhotoURL(null)
-  }
-  
+  const cancelPhotoChange = () => {
+    setPhotoURL(null);
+  };
+
   const handlePhotoSubmit = async (e) => {
     e.preventDefault();
-    
-    // Verifique se um arquivo foi selecionado
     if (photoFile) {
       try {
         const candidateEmail = localStorage.getItem('candidateEmail');
-        
-        // Crie uma referência no Firebase Storage com um nome único para a foto
         const photoRef = ref(storage, `photos/${candidateEmail}-${photoFile.name}`);
-        
-        // Faça o upload do arquivo para o Firebase Storage
         const uploadTask = uploadBytesResumable(photoRef, photoFile);
-        
-        // Aguarde o término do upload
         await uploadTask;
-        
-        // Obtenha a URL de download da foto
         const downloadURL = await getDownloadURL(photoRef);
-        
-        // Atualize o perfil do candidato com a URL da foto no Firestore
         const userDocRef = doc(db, 'Candidates Data', candidateEmail);
         await updateDoc(userDocRef, {
           PhotoURL: downloadURL,
         });
-        
-        // Exiba uma mensagem de sucesso ou faça qualquer outra ação necessária
         console.log('Foto enviada com sucesso!');
-        alert(t("candidateProfile.alert1"))
-        setPhotoURL(null)
+        alert(t("candidateProfile.alert1"));
+        setPhotoURL(null);
       } catch (error) {
         console.error('Erro ao enviar a foto:', error);
       }
@@ -202,7 +136,28 @@ const CandidateProfile = () => {
       alert('Selecione uma foto para enviar.');
     }
   };
-  
+
+  const handleDataChange = async (e) => {
+    e.preventDefault()
+    try {
+      const candidateEmail = localStorage.getItem('candidateEmail');
+      const userDocRef = doc(db, 'Candidates Data', candidateEmail)
+      await updateDoc(userDocRef, {
+        CandidateName: candidateName,
+        CandidateBirthday: candidateBirthday,
+        CandidatePhone: candidatePhone,
+        CandidateCity: candidateCity,
+        CandidateGender: candidateGender,
+        CandidateProfession: candidateProfession,
+        CandidateEducation: candidateEducation
+        
+      })
+      alert('Dados Atualizados com Sucesso!')
+    } catch (error) {
+      
+
+    }
+  }
 
   return (
     <div id="candidateProfileContainer">
@@ -212,93 +167,96 @@ const CandidateProfile = () => {
         <h1>
           {t("candidateProfile.welcome")} <br /> {userData && userData.CandidateName}!
         </h1>
-        <img id="profilePicture" src={userData && userData.PhotoURL} alt="" />
-        <hr />
-        <p>{userData && userData.CandidateName}</p>
-        <hr />
-        <div id="candidateBirthdayFormated">
-          <p>{currentYear - (userData && userData.CandidateBirthday)} {t("candidateProfile.years")}</p>
-          <hr />
-        </div>
-        <div id="candidatePhone">
-          <p>{userData && userData.CandidatePhone}</p>
-          <hr />
-        </div>
-        <div id="mainLocation">
-          <p>{userData && userData.CandidateCity}</p>
-          <hr />
-        </div>
-        <p>{userData && userData.CandidateProfession}</p>
-        <hr />
-        <p>{userData && userData.CandidateEducation}</p>
-        <hr />
-        <p onClick={leaveProfile} className='btn btn-dark form-control'>{t("candidateProfile.logoutButton")}</p>
-      </section>
-      <section id="editCandidateProfile">
-        <h1>{t("candidateProfile.editProfileTitle")}</h1>
-        <div className="editingContainer">
-          <div className="editInput">
+        <div id="photoContainer">
+          <form>
+            <div className="fileInputDiv"></div>
             <input
-              type="text"
-              name="candidateName"
-              id="candidateName"
-              className="form-control"
-              value={newCandidateName}
-              onChange={e => setNewCandidateName(e.target.value)}
-              placeholder={userData && userData.CandidateName}
+              className="material-symbols-outlined"
+              type="file"
+              name="photoInput"
+              id="photoInput"
+              onChange={handlePhotoChange}
             />
-            <span className="material-symbols-outlined" onClick={updateName}>
-              edit
-            </span>
-          </div>
+          </form>
+          {photoURL && (
+            <div className="confirmPicture">
+              <p>{t("candidateProfile.label1")}</p>
+              <img src={photoURL} alt="Selected" id="showPic" />
+              <div className="showPicButtons">
+                <span className="material-symbols-outlined" onClick={handlePhotoSubmit}>
+                  check
+                </span>
+                <span onClick={cancelPhotoChange} className="material-symbols-outlined">close</span>
+              </div>
+            </div>
+          )}
+          <label htmlFor="photoInput" className="material-symbols-outlined">add_a_photo</label>
+          <img id="profilePicture" src={userData && userData.PhotoURL} alt="" />
         </div>
-        <div className="editingContainer">
-          <div className="editInput">
-            <input
-              type="text"
-              name="candidateCity"
-              id="candidateCity"
-              className="form-control"
-              value={newCandidateCity}
-              onChange={e => setNewCandidateCity(e.target.value)}
-              placeholder={userData && userData.CandidateCity}
-            />
-            <span className="material-symbols-outlined" onClick={updateCity}>
-              edit
-            </span>
-          </div>
-        </div>
-        <form>
-          <div className='fileInputDiv'>
-            <label htmlFor="photoInput" className='form-control'>{t("candidateProfile.placeholder1")}</label>
-          </div>
-        <input
-          type="file"
-          name="photoInput"
-          id="photoInput"
-          onChange={handlePhotoChange}/>
+        <form onSubmit={handleDataChange} id='editCandidateProfile'>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidateName}
+            onChange={handleNameChange}
+            placeholder={userData && userData.CandidateName}
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidateBirthday}
+            onChange={handleBirthdayChange}
+            placeholder={userData && userData.CandidateBirthday}
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidatePhone}
+            onChange={handlePhoneChange}
+            placeholder={userData && userData.CandidatePhone}
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidateGender}
+            onChange={handleGenderChange}
+            placeholder={userData && userData.CandidateGender}
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidateCity}
+            onChange={handleCityChange}
+            placeholder={userData && userData.CandidateCity}
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidateProfession}
+            onChange={handleProfessionChange}
+            placeholder={userData && userData.CandidateProfession}
+          />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={candidateEducation}
+            onChange={handleEducationChange}
+            placeholder={userData && userData.CandidateEducation}
+          /> 
+          <button type='submit' className='btn btn-dark form-control'>Upload Data</button>
         </form>
-      <form>
-      <div className='fileInputDiv'>
-        <label htmlFor="curriculumInput" className='form-control'>{t("candidateProfile.placeholder2")}</label>
-        <span className="material-symbols-outlined"  onClick={handleCurriculumSubmit}>
-          edit
-        </span>
-      </div>
-            <input type="file" name="curriculumInput" id="curriculumInput" onChange={handleCurriculumChange}/>
-      </form>
+        <p onClick={leaveProfile} className="material-symbols-outlined">
+          logout
+        </p>
       </section>
-      {photoURL && <div className='confirmPicture'>
-        <p>{t("candidateProfile.label1")}</p>
-        <img src={photoURL} alt="Selected" id="showPic" />
-        <div className='showPicButtons'>
-          <span className="material-symbols-outlined"  onClick={handlePhotoSubmit}>
-            check
-          </span>
-          <span onClick={cancelPhotoChange} className="material-symbols-outlined">close</span>
-        </div>
-        </div>}
-        <Footer/>
+      <Footer />
     </div>
   );
 };

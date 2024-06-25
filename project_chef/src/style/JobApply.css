@@ -31,7 +31,6 @@ h1 {
     margin-bottom: 50px;
 }
 
-.candidateCV input {
-    width: 50%;
-    opacity: 0;
+#jobApply form button {
+    background-color: rgb(41, 57, 107);
 }
