@@ -1,12 +1,12 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../style/JobDetails.css'
+import '../style/JobDetails.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, addDoc, collection} from 'firebase/firestore';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { useTranslation } from 'react-i18next';
 
 const firebaseConfig = {
@@ -23,23 +23,25 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const JobDetails = () => {
-
-  const {t} = useTranslation()
-
+  const { t } = useTranslation();
   const { id } = useParams();
   const [jobDetails, setJobDetails] = useState(null);
   const navigate = useNavigate();
 
-
   useEffect(() => {
-
     const fetchJobDetails = async () => {
       // Use o ID da vaga para recuperar os detalhes da vaga do Firebase
       try {
         const docRef = doc(db, 'Vagas', id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setJobDetails(docSnap.data());
+          const jobData = docSnap.data();
+          // Converte o Timestamp para uma string formatada
+          if (jobData.CreationDate) {
+            const date = jobData.CreationDate.toDate();
+            jobData.CreationDate = date.toLocaleDateString('pt-PT');
+          }
+          setJobDetails(jobData);
           window.scrollTo(0, 0);
         } else {
           console.log('Nenhuma vaga encontrada com o ID fornecido');
@@ -56,56 +58,52 @@ const JobDetails = () => {
     return <div>Carregando...</div>;
   }
 
-
   const candidateEmail = localStorage.getItem('candidateEmail');
-
 
   return (
     <div id='jobDetails'>
-      <Header/>
+      <Header />
       <Link to={'/'}>
-          <span>
-            <span className='material-symbols-outlined'>arrow_back_ios</span>
-            {t("jobDetails.backToList")}
-          </span>
+        <span>
+          <span className='material-symbols-outlined'>arrow_back_ios</span>
+          {t("jobDetails.backToList")}
+        </span>
       </Link>
       <h1>{jobDetails.adTitle}</h1>
       <section id='jobDetailsHeader'>
-         <ul>
-             <li><span className='material-symbols-outlined'>calendar_today</span> {jobDetails.CreationDate}</li>
-              <li><span className='material-symbols-outlined'>location_on</span> {jobDetails.adCity}</li>
-              <li><span className='material-symbols-outlined'>apartment</span> {jobDetails.companyName}</li>
-              <li><span className='material-symbols-outlined'>schedule</span>  {jobDetails.jobTypeSelected}</li>
-         </ul>
+        <ul>
+          <li><span className='material-symbols-outlined'>calendar_today</span> {jobDetails.CreationDate}</li>
+          <li><span className='material-symbols-outlined'>location_on</span> {jobDetails.adCity}</li>
+          <li><span className='material-symbols-outlined'>apartment</span> {jobDetails.companyName}</li>
+          <li><span className='material-symbols-outlined'>schedule</span> {jobDetails.jobTypeSelected}</li>
+        </ul>
       </section>
       <section id='detailsComplement'>
         <div className='jobDescription'>
           <h4>{t("jobDetails.description")}</h4>
-           {jobDetails.description}
+          {jobDetails.description}
         </div>
         <div className='jobDescription'>
           <h4>{t("jobDetails.profile")}</h4>
-           {jobDetails.profile}
+          {jobDetails.profile}
         </div>
         <div className='jobDescription'>
           <h4>{t("jobDetails.description")}</h4>
-           {jobDetails.jobTypeDescription}
+          {jobDetails.jobTypeDescription}
         </div>
         <div className='jobDescription'>
           <h4>{t("jobDetails.salary")}</h4>
-           {jobDetails.jobSalary}
+          {jobDetails.jobSalary}
         </div>
-        {candidateEmail && (
+        {candidateEmail ? (
           <Link to={`/job-apply/${id}`} state={jobDetails}>
-          <button className='btn btn-dark'>{t("jobDetails.applyButton")}</button>
-        </Link>
-        )
-        }
-        {!candidateEmail && (
+            <button className='btn btn-dark'>{t("jobDetails.applyButton")}</button>
+          </Link>
+        ) : (
           <button className='btn btn-dark' onClick={() => navigate('/candidate-profile-login')}>{t("jobDetails.loginButton")}</button>
         )}
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

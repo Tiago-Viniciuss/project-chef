@@ -31,14 +31,13 @@ const Home = () => {
       try {
         const normalizedKeyword = keyword.toLowerCase();
         let q;
-
+  
         if (keyword) {
           q = query(
             collection(db, 'Vagas'),
             where('adTitleNormalized', '>=', normalizedKeyword),
             where('adTitleNormalized', '<=', normalizedKeyword + '\uf8ff'),
-            orderBy('adTitleNormalized'),
-            orderBy('CreationDate', 'desc')
+            orderBy('adTitleNormalized')
           );
         } else if (classChange) {
           q = query(
@@ -49,7 +48,7 @@ const Home = () => {
         } else {
           q = query(collection(db, 'Vagas'), orderBy('CreationDate', 'desc'));
         }
-
+  
         const querySnapshot = await getDocs(q);
         const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setJobs(jobsData);
@@ -58,10 +57,9 @@ const Home = () => {
         alert('Erro ao buscar vagas de emprego: ' + error.message);
       }
     };
-
+  
     fetchJobs();
   }, [keyword, classChange]);
-
   const navigate = useNavigate();
 
   const handleApply = (jobId) => {
@@ -104,7 +102,7 @@ const Home = () => {
           className='form-control'
         />
         <section id='filterSection'>
-          {['Kitchen', 'Bar', , 'Adm','DiningRoom', 'Delivery', 'Freelancer'].map((category) => (
+          {['Kitchen', 'Bar', 'Adm', 'DiningRoom', 'Delivery', 'Freelancer'].map((category) => (
             <button
               key={category}
               className={`btn buttonColor ${activeCategory === category ? 'active' : ''}`}

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import CompanyOptionsBar from '../components/CompanyOptionsBar';
 import CompanyPostedJobs from '../routes/CompanyPostedJobs'
 import {Trans, useTranslation} from 'react-i18next'
+import { Timestamp } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
@@ -82,11 +83,11 @@ const CompanyProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const currentDate = new Date().toLocaleDateString('pt-PT');
+    const currentDate = Timestamp.now(); // Use Timestamp do Firestore
     const companyEmail = localStorage.getItem('companyEmail');
     const keywords = adTitle.toLowerCase().split(' ');
     const sectorKeywords = chooseCategory.split(' ');
-    const form = document.getElementById('createAd')
+  
     const formData = { 
       adTitle,
       adTitleNormalized: adTitle.toLowerCase(),
@@ -102,7 +103,10 @@ const CompanyProfile = () => {
       jobTypeSelected,
       jobSalary, 
       smallDescription,
-      CreationDate: currentDate , companyEmail: companyEmail};
+      CreationDate: currentDate, // Salva como Timestamp
+      companyEmail: companyEmail
+    };
+  
     try {
       await addDoc(collection(db, 'Vagas'), formData);
       setAdTitle('');
@@ -120,7 +124,6 @@ const CompanyProfile = () => {
     } catch (error) {
       console.error('Erro ao adicionar vaga de emprego:', error);
     }
-    handleSubmit()
   };
 
   const navigate = useNavigate();
