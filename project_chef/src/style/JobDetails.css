@@ -3,6 +3,10 @@
     padding: 15px;
 }
 
+#jobDetails h1 {
+    margin: 0px;
+}
+
 #jobDetailsHeader {
     border: 1px solid black;
     margin: 25px;
