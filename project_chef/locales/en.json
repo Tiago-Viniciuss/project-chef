@@ -156,7 +156,7 @@
         "placeholder5": "What is your profession?",
         "placeholder6": "Create a password using letters and numbers",
         "placeholder7": "What is your marital status?",
-        "placeholder8": "Do you speak other languages? Which?",
+        "placeholder8": "Wich languages do you speak?",
         "placeholder9": "Do you have any relevant course for the area?",
         "placeholder10": "Insert your phone number",
         "label1": "Do you have a portuguese Taxpayer Number?",
@@ -207,7 +207,8 @@
         "label2": "Phone",
         "label3": "Curriculum",
         "label4": "Resume",
-        "placeholder1": "Attach Curriculum",
+        "info1": "The employer will see the following information:",
+        "info2": "Name, phone number, email, profile picture, resume, year of birth, skills, and marital status",
         "button1": "Apply now"
     }
 

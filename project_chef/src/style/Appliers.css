@@ -6,8 +6,8 @@
 
 #appliers a {
     text-decoration: underline;
-    padding: 5px;
     pointer-events: auto;
+    font-size: 0.8em;
 }
 
 img {

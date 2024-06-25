@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, where, doc, deleteDoc} from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, where, doc, deleteDoc, orderBy } from 'firebase/firestore';
 import '../style/Appliers.css';
 
-const firebaseConfig = { apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
+const firebaseConfig = { 
+  apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
   authDomain: "projeto-empregos.firebaseapp.com",
   projectId: "projeto-empregos",
   storageBucket: "projeto-empregos.appspot.com",
   messagingSenderId: "640012785481",
   appId: "1:640012785481:web:8bd5e89d6ca63729666c98",
-  measurementId: "G-H63RS9DHMF" };
+  measurementId: "G-H63RS9DHMF" 
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -27,7 +29,12 @@ const Appliers = () => {
       }
 
       const conversationsCollection = collection(db, 'Conversations');
-      const q = query(conversationsCollection, where('CompanyEmail', '==', companyEmail));
+      const q = query(
+        conversationsCollection, 
+        where('CompanyEmail', '==', companyEmail),
+        orderBy('Timestamp', 'desc')
+      );
+
       const conversationsSnapshot = await getDocs(q);
       const appliersList = conversationsSnapshot.docs.map(doc => ({
         id: doc.id,
@@ -48,8 +55,8 @@ const Appliers = () => {
   };
 
   const closePhoto = () => {
-    setShowPhoto(false)
-  }
+    setShowPhoto(false);
+  };
 
   const deleteCandidate = async (id) => {
     try {
@@ -61,10 +68,6 @@ const Appliers = () => {
     }
   };
   
-  
-  
-  
-
   return (
     <div>
       <h1 id='appliersTitle'>Minhas Conversas</h1>
@@ -88,21 +91,19 @@ const Appliers = () => {
               <p className='applierDetails'>Falo {applier.CandidateLanguage}</p>
               <p className='applierDetails'>Estudei {applier.CandidateEducation}</p>
               <p className='applierDetails'>Atualmente sou {applier.CandidateMarital}</p>
-              <p className='applierDetails'>Possuo {applier.CandidateSchool}</p>
               <button className='btn btn-danger' onClick={() => deleteCandidate(applier.id)}>Excluir</button>
-
             </div>
           ))
         ) : (
           <p>Nenhuma conversa encontrada.</p>
         )}
       </section>
-        <div id='showPhoto' style={{ display: showPhoto ? 'flex' : 'none' }}  onClick={closePhoto}>
+      <div id='showPhoto' style={{ display: showPhoto ? 'flex' : 'none' }} onClick={closePhoto}>
         {showPhoto && (
-      <div>
-        <img src={showPhoto} alt="Candidate"/>
-      </div>
-      )}
+          <div>
+            <img src={showPhoto} alt="Candidate" />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -143,8 +143,7 @@ const JobApply = () => {
           candidateBirthday: userData && userData.CandidateBirthday,
           candidatePhone: candidatePhone,
           candidateEmail: userData && userData.CandidateEmail,
-          candidateMessage: candidateLetter,
-          candidateCurriculum: userData && userData.CurriculumURL
+          candidateMessage: candidateLetter
         };
     
         emailjs.send("service_zj8ccsr", "template_iqm233k", templateParams, "cFnDj2Cg2bHzT0kDs")
@@ -185,6 +184,8 @@ const JobApply = () => {
                 <input type="number" name="candidatePhone" id="candidatePhone" className='form-control' placeholder='Insira seu número de telemóvel' required value={candidatePhone} onChange={handleCandidatePhone}/>
                 <span>{t('applyJob.label4')}</span>
                 <textarea name="candidateLetter" id="candidateLetter" cols="30" rows="10" className='form-control' onChange={handleCandidateLetter} value={candidateLetter}></textarea>
+                <p>{t('applyJob.info1')}</p>
+                <p>{t('applyJob.info2')}</p>
                 <button type='submit' className='btn btn-dark'>{t('applyJob.button1')}</button>
             </form>
             <Footer />

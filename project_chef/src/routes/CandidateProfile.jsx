@@ -50,7 +50,6 @@ const CandidateProfile = () => {
         setCandidateBirthday(data.CandidateBirthday)
         setCandidatePhone(data.CandidatePhone)
         setCandidateCity(data.CandidateCity)
-        setCandidateGender(data.CandidateGender)
         setCandidateProfession(data.CandidateProfession)
         setCandidateEducation(data.CandidateEducation)
       } else {
@@ -79,10 +78,6 @@ const CandidateProfile = () => {
 
   const handleCityChange = (e) => {
     setCandidateCity(e.target.value);
-  };
-
-  const handleGenderChange = (e) => {
-    setCandidateGender(e.target.value);
   };
 
   const handleProfessionChange = (e) => {
@@ -126,9 +121,8 @@ const CandidateProfile = () => {
         await updateDoc(userDocRef, {
           PhotoURL: downloadURL,
         });
-        console.log('Foto enviada com sucesso!');
-        alert(t("candidateProfile.alert1"));
         setPhotoURL(null);
+        window.location.reload()
       } catch (error) {
         console.error('Erro ao enviar a foto:', error);
       }
@@ -147,7 +141,6 @@ const CandidateProfile = () => {
         CandidateBirthday: candidateBirthday,
         CandidatePhone: candidatePhone,
         CandidateCity: candidateCity,
-        CandidateGender: candidateGender,
         CandidateProfession: candidateProfession,
         CandidateEducation: candidateEducation
         
@@ -162,7 +155,6 @@ const CandidateProfile = () => {
   return (
     <div id="candidateProfileContainer">
       <Header />
-      <CandidateOptionsBar />
       <section id="candidateInfo">
         <h1>
           {t("candidateProfile.welcome")} <br /> {userData && userData.CandidateName}!
@@ -217,14 +209,6 @@ const CandidateProfile = () => {
             value={candidatePhone}
             onChange={handlePhoneChange}
             placeholder={userData && userData.CandidatePhone}
-          />
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={candidateGender}
-            onChange={handleGenderChange}
-            placeholder={userData && userData.CandidateGender}
           />
           <input
             type="text"

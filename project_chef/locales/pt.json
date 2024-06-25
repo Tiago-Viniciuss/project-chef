@@ -152,7 +152,7 @@
         "placeholder5": "Qual a vossa função?",
         "placeholder6": "Crie uma senha usando letras e números",
         "placeholder7": "Qual o vosso estado civil?",
-        "placeholder8": "Falas outros idiomas? Quais?",
+        "placeholder8": "Quais as línguas que tu falas?",
         "placeholder9": "Tens algum curso relevante para a área? Qual?",
         "placeholder10": "Informe o vosso número de telemóvel",
         "label1": "Possuis Número de Contribuinte português?",
@@ -203,7 +203,8 @@
         "label2": "Telemóvel",
         "label3": "Currículo",
         "label4": "Apresentação",
-        "placeholder1": "Anexar Currículo",
+        "info1": "O empregador verá as seguintes informações: ",
+        "info2": "Nome, telefone para contacto, e-mail, foto de perfil, apresentação, ano de nascimento, competências e estado civil",
         "button1": "Aplicar agora"
     }
 }
