@@ -1,5 +1,4 @@
 import React from 'react'
-import CandidateOptionsBar from '../components/CandidateOptionsBar'
 
 const EditCandidateProfile = () => {
   return (

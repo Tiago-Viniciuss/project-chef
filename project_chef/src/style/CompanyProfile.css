@@ -95,6 +95,23 @@ Form Login Profile
   
   */
 
+  #container1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #container1 #insertPicture {
+    width: 150px;
+    height: 150px;
+    background-color: rgb(98, 98, 98);
+    border-radius: 50%;
+  }
+
+  #container1 #companyPicture {
+    display: none;
+  }
+
+
   .companyProfilePicture {
     margin: auto;
     width: 150px;
@@ -106,6 +123,7 @@ Form Login Profile
     background-position: center;
     background-repeat: no-repeat;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
   #companyProfileInfo {
@@ -117,10 +135,43 @@ Form Login Profile
     text-align: left;
   }
 
+  #companyProfileInfo h1 {
+    text-align: center;
+  }
+
+  #companyData {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  #companyData input {
+    border: none;
+    border-bottom: 1px solid rgb(161, 161, 161);
+    width: 100%;
+    outline: none;
+  }
+
+  #companyData input:focus {
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    width: 100%;
+    font-weight: bold;
+  }
+
+  #companyData input::placeholder {
+    color: black;
+  }
+
+  #companyData button {
+    background-color: rgb(41, 57, 107);
+  }
+
   #companyProfileInfo hr {
     width: 80%;
     margin: 15px auto;
-}
+  }
   
   #companyProfileInfo legend {
   text-align: left;
@@ -154,7 +205,7 @@ Form Login Profile
   display: none;
   gap: 10px;
   margin: 70px 0px;
-    padding: 10px;
+  padding: 10px;
   }
 
   #createAd label {
@@ -175,6 +226,12 @@ Form Login Profile
     display: none;
   }
 
+  #logoutCompany {
+    font-size: 1.4em;
+    font-weight: bold; 
+    background-color: white; 
+  }
+
   @media screen and (min-width: 800px) {
 
     #companyProfileInfo {
@@ -190,5 +247,38 @@ Form Login Profile
     }
 }
   
+
+@media screen and (min-width: 1000px) {
+
+  #createJobs {
+      width: 980px;
+      margin: auto;
+      padding: 100px 0px;
+  }
+
+  #container1 {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    gap: 45px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #container1 #insertPicture {
+    width: 150px;
+    height: 150px;
+    background-color: rgb(83, 83, 83);
+    border-radius: 50%;
+  }
+
+  #container1 #companyPicture {
+    visibility: hidden;
+  }
+  
+  .companyBasicInfo {
+    width: 800px;
+  }
+}
 
 

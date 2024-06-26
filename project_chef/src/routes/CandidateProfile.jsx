@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import CandidateOptionsBar from '../components/CandidateOptionsBar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useTranslation } from 'react-i18next';

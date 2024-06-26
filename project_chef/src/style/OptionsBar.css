@@ -1,10 +1,39 @@
 
+#optionsBar {
+    font-size: 1.3em;
+}
+
+#optionsBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    background-color: black;
+    z-index: 80;
+}
+
+#optionsBar button {
+    font-size: 0.5em;
+    border-radius: 15px 15px 0px 0px;
+    color: white;
+    margin: 0px;
+    border-bottom-width: 0px;
+}
+
+#optionsBar #btn1 {
+    background-color: white;
+    color: black;
+}
+
+
 @media screen and (min-width: 1000px) {
     
 
-
-    #candidateOptionsBar {
+    #optionsBar {
         margin-top: 30px;
         font-size: 1.3em;
+        
     }
 }

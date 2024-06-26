@@ -145,7 +145,7 @@ const CompanyOptionsBar = () => {
 
 
   return (
-    <div id='candidateOptionsBar' className="optionsBar">
+    <div id='optionsBar' className="optionsBar">
         <button id='btn1' className='btn' onClick={changePage1}> {t("companyButtons.button1")} </button>
         <button id='btn2' className='btn' onClick={changePage2}>{t("companyButtons.button2")}</button>
         <button id='btn3' className='btn' onClick={changePage3}>{t("companyButtons.button3")}</button>
