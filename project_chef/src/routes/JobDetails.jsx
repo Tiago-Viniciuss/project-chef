@@ -91,7 +91,7 @@ const JobDetails = () => {
           {jobDetails.profile}
         </div>
         <div className='jobDescription'>
-          <h4>{t("jobDetails.description")}</h4>
+          <h4>{t("jobDetails.time")}</h4>
           {jobDetails.jobTypeDescription}
         </div>
         <div className='jobDescription'>

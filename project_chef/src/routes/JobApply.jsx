@@ -39,6 +39,7 @@ const JobApply = () => {
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
                         setJobDetails(docSnap.data());
+                        window.scrollTo(0, 0);
                     } else {
                         console.log('Nenhuma vaga encontrada com o ID fornecido');
                     }
