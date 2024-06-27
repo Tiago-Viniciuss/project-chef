@@ -89,7 +89,10 @@ const CreateProfile = () => {
     try {
       const usersCollectionRef = collection(firestore, 'Candidates Data');
 
-      await setDoc(doc(usersCollectionRef, candidateEmail), { 
+      
+
+      if (photoFile) {
+        await setDoc(doc(usersCollectionRef, candidateEmail), { 
         CandidateName: candidateName,
         CandidateEmail: candidateEmail,
         CandidateBirthday: candidateBirthday,
@@ -103,7 +106,6 @@ const CreateProfile = () => {
         Timestamp: new Date()
       });
 
-      if (photoFile) {
         const photoRef = ref(storage, `photos/${candidateEmail}-${photoFile.name}`);
         const uploadTask = uploadBytesResumable(photoRef, photoFile);
         await uploadTask;
@@ -112,9 +114,11 @@ const CreateProfile = () => {
         await updateDoc(userDocRef, {
           PhotoURL: downloadURL,
         });
-      }
 
-      navigateToCandidateProfileLogin();
+        navigateToCandidateProfileLogin();
+      } else {
+        alert((t('createCandidate.alert')))
+      }
     } catch (error) {
       console.error('Erro ao adicionar usuário:', error);
     }
@@ -132,7 +136,7 @@ const CreateProfile = () => {
               type="file"
               name="photoInput"
               id="photoInput"
-              onChange={handlePhotoChange}
+              onChange={handlePhotoChange} required
             />
           </div>
         </form>

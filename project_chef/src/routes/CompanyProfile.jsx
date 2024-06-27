@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, addDoc, collection, updateDoc } from 'firebase/firestore';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import Appliers from '../components/Appliers';
 import CompanyOptionsBar from '../components/CompanyOptionsBar';
 import CompanyPostedJobs from '../routes/CompanyPostedJobs';
@@ -22,6 +23,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 const CompanyProfile = () => {
   const { t } = useTranslation();
@@ -49,13 +51,6 @@ const CompanyProfile = () => {
   const [jobSalary, setJobSalary] = useState('');
   const [userData, setUserData] = useState(null);
 
-  const handleSmallDescriptionChange = (event) => {
-    const { value } = event.target;
-    if (value.length <= 200) {
-      setSmallDescription(value);
-    }
-  };
-
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [descriptionn, setDescriptionn] = useState('');
@@ -71,6 +66,15 @@ const CompanyProfile = () => {
   const handleDescription = (e) => {
     setDescriptionn(e.target.value);
   };
+
+  const [photoFile, setPhotoFile] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    setPhotoFile(file);
+    setPhotoPreview(URL.createObjectURL(file));
+  }
 
   const uploadCompanyData = async (e) => {
     e.preventDefault();
@@ -114,7 +118,7 @@ const CompanyProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const currentDate = Timestamp.now(); // Use Timestamp do Firestore
+    const currentDate = Timestamp.now();
     const companyEmail = localStorage.getItem('companyEmail');
     const keywords = adTitle.toLowerCase().split(' ');
     const sectorKeywords = chooseCategory.split(' ');
@@ -134,26 +138,64 @@ const CompanyProfile = () => {
       jobTypeSelected,
       jobSalary,
       smallDescription,
-      CreationDate: currentDate, // Salva como Timestamp
-      companyEmail: companyEmail
+      CreationDate: currentDate,
+      companyEmail: companyEmail,
     };
 
-    try {
-      await addDoc(collection(db, 'Vagas'), formData);
-      setAdTitle('');
-      setCompanyName('');
-      setChooseCategory('');
-      setAdCity('');
-      setWorkPlace('');
-      setDescription('');
-      setProfile('');
-      setJobTypeDescription('');
-      setJobTypeSelected('');
-      setJobSalary('');
-      setSmallDescription('');
-      alert(t("alerts.adPostSuccessfully"));
-    } catch (error) {
-      console.error('Erro ao adicionar vaga de emprego:', error);
+    if (photoFile) {
+      const photoRef = ref(storage, `photos/${companyEmail}-${photoFile.name}`);
+      const uploadTask = uploadBytesResumable(photoRef, photoFile);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Handle progress, if needed
+        },
+        (error) => {
+          console.error('Erro ao carregar a foto:', error);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(photoRef);
+          formData.PhotoURL = downloadURL;
+
+          try {
+            await addDoc(collection(db, 'Vagas'), formData);
+            setAdTitle('');
+            setCompanyName('');
+            setChooseCategory('');
+            setAdCity('');
+            setWorkPlace('');
+            setDescription('');
+            setProfile('');
+            setJobTypeDescription('');
+            setJobTypeSelected('');
+            setJobSalary('');
+            setSmallDescription('');
+            setPhotoFile(null);
+            alert(t("alerts.adPostSuccessfully"));
+          } catch (error) {
+            console.error('Erro ao adicionar vaga de emprego:', error);
+          }
+        }
+      );
+    } else {
+      try {
+        await addDoc(collection(db, 'Vagas'), formData);
+        setAdTitle('');
+        setCompanyName('');
+        setChooseCategory('');
+        setAdCity('');
+        setWorkPlace('');
+        setDescription('');
+        setProfile('');
+        setJobTypeDescription('');
+        setJobTypeSelected('');
+        setJobSalary('');
+        setSmallDescription('');
+        setPhotoFile(null);
+        alert(t("alerts.adPostSuccessfully"));
+      } catch (error) {
+        console.error('Erro ao adicionar vaga de emprego:', error);
+      }
     }
   };
 
@@ -183,15 +225,16 @@ const CompanyProfile = () => {
         </form>
         <button className='material-symbols-outlined' onClick={leaveProfile} id='logoutCompany'>logout</button>
       </section>
-
       <section id='createJobs'>
         <form className='form-control' id='createAd' onSubmit={handleSubmit}>
           <h1 className='criarAnuncioTitulo'>{t("companyProfile.createAdTitle")}</h1>
+
           <div id='container1'>
-          <section>
-            <label id='insertPicture' htmlFor="companyPicture"></label>
-            <input type="file" name="companyPicture" id="companyPicture" />
-          </section>
+            <section>
+              <label htmlFor="companyPicture" className="material-symbols-outlined" id='insertPicture'>add_a_photo</label>   
+              {photoPreview && <img id="profilePicture" src={photoPreview} alt="Preview" />}
+              <input type="file" name="companyPicture" id="companyPicture" onChange={handlePhotoChange}/>
+            </section>
             <section className='companyBasicInfo'>
               <label htmlFor="adTitle">{t("companyProfile.label1")}</label> <br />
               <input type="text" className='form-control' name="adTitle" id="adTitle" value={adTitle} onChange={(e) => setAdTitle(e.target.value)} required placeholder={t("companyProfile.placeholder1")} />
@@ -207,41 +250,31 @@ const CompanyProfile = () => {
                 <option value='Delivery Entrega'>{t("companyProfile.Delivery")}</option>
                 <option value='Freelancer'>{t("companyProfile.Freelancer")}</option>
               </select>
+              <label htmlFor="adCity">{t("companyProfile.label4")}</label> <br />
+              <select name="adCity" id="adCity" className='form-control' value={adCity} onChange={(e) => setAdCity(e.target.value)} required>
+                <optgroup>
+                  <option value="" disabled>-- {t("companyProfile.chooseLocation")} --</option>
+                  <option value="Albufeira">{t("companyProfile.location1")}</option>
+                  <option value="Almada">{t("companyProfile.location2")}</option>
+                  <option value="Aveiro">{t("companyProfile.location3")}</option>
+                  <option value="Braga">{t("companyProfile.location4")}</option>
+                  <option value="Coimbra">{t("companyProfile.location5")}</option>
+                  <option value="Évora">{t("companyProfile.location6")}</option>
+                  <option value="Faro">{t("companyProfile.location7")}</option>
+                  <option value="Guimarães">{t("companyProfile.location8")}</option>
+                  <option value="Lisboa">{t("companyProfile.location9")}</option>
+                  <option value="Porto">{t("companyProfile.location10")}</option>
+                </optgroup>
+              </select>
             </section>
           </div>
           <div>
-            <label htmlFor="adCity">{t("companyProfile.label4")}</label> <br />
-            <select name="adCity" id="adCity" className='form-control' value={adCity} onChange={(e) => setAdCity(e.target.value)} required>
-              <optgroup>
-                <option value="" disabled>-- {t("companyProfile.chooseLocation")} --</option>
-                <option value="Albufeira">{t("companyProfile.location1")}</option>
-                <option value="Almada">{t("companyProfile.location2")}</option>
-                <option value="Aveiro">{t("companyProfile.location3")}</option>
-                <option value="Braga">{t("companyProfile.location4")}</option>
-                <option value="Coimbra">{t("companyProfile.location5")}</option>
-                <option value="Évora">{t("companyProfile.location6")}</option>
-                <option value="Faro">{t("companyProfile.location7")}</option>
-                <option value="Guimarães">{t("companyProfile.location8")}</option>
-                <option value="Lisboa">{t("companyProfile.location9")}</option>
-                <option value="Porto">{t("companyProfile.location10")}</option>
-              </optgroup>
-            </select>
+            <label htmlFor="description">{t("companyProfile.label8")}</label>
+            <textarea id='description' name="description" cols="45" rows="6" className='form-control' placeholder={t("companyProfile.placeholder4")} value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
           </div>
           <div>
-            <label htmlFor="smallDescription">{t("companyProfile.label5")}</label>
-            <textarea
-              id="smallDescription"
-              name="smallDescription"
-              cols="45"
-              rows="7"
-              className="form-control"
-              value={smallDescription}
-              placeholder={t("companyProfile.placeholder3")}
-              onChange={handleSmallDescriptionChange}
-              maxLength={200} // Defina o limite de caracteres desejado aqui
-              required
-            ></textarea>
-            <p>{t("companyProfile.charactersRemaining")}: {200 - smallDescription.length}</p> {/* Exibe o número de caracteres restantes */}
+            <label htmlFor="profile">{t("companyProfile.label9")}</label>
+            <textarea id='profile' name="profile" cols="45" rows="6" className='form-control' placeholder={t("companyProfile.placeholder5")} value={profile} onChange={(e) => setProfile(e.target.value)} required></textarea>
           </div>
           <div>
             <legend>{t("companyProfile.label7")}</legend>
@@ -258,16 +291,8 @@ const CompanyProfile = () => {
             </fieldset>
           </div>
           <div>
-            <label htmlFor="description">{t("companyProfile.label8")}</label>
-            <textarea id='description' name="description" cols="45" rows="15" className='form-control' placeholder={t("companyProfile.placeholder4")} value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
-          </div>
-          <div>
-            <label htmlFor="profile">{t("companyProfile.label9")}</label>
-            <textarea id='profile' name="profile" cols="45" rows="15" className='form-control' placeholder={t("companyProfile.placeholder5")} value={profile} onChange={(e) => setProfile(e.target.value)} required></textarea>
-          </div>
-          <div>
             <label htmlFor="jobTypeDescription">{t("companyProfile.label10")}</label>
-            <textarea id='jobTypeDescription' name="jobTypeDescription" cols="45" rows="8" className='form-control' placeholder={t("companyProfile.placeholder6")} value={jobTypeDescription} onChange={(e) => setJobTypeDescription(e.target.value)} required></textarea>
+            <textarea id='jobTypeDescription' name="jobTypeDescription" cols="45" rows="6" className='form-control' placeholder={t("companyProfile.placeholder6")} value={jobTypeDescription} onChange={(e) => setJobTypeDescription(e.target.value)} required></textarea>
           </div>
           <div>
             <label htmlFor="jobSalary">{t("companyProfile.label11")}</label> <br />

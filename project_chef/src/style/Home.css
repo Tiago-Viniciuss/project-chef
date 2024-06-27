@@ -309,6 +309,12 @@
     gap: 25px;
   }
 
+  .jobContainer img {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+  }
+
   .jobBody {
     background-color:  rgb(41, 57, 107);
     color: white;

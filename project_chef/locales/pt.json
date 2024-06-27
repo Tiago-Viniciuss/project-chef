@@ -86,8 +86,8 @@
         "placeholder2": "Digite o nome da empresa",
         "placeholder3": "Escreva uma descrição curta, falando de forma breve do que se trata a vaga. Isso aparecerá no anúncio da página principal.",
         "placeholder4": "Descreva a vaga que estás a oferecer e as respectivas responsabilidades. Busque clareza e riqueza em detalhes, para que não hajam dúvidas ao candidato.",
-        "placeholder5": " Descreva o tipo de candidato que estás em busca, levando em consideração a escolaridade, gênero, morada, etc.",
-        "placeholder6": "Defina a carga horária que o candidato deverá cumprir."
+        "placeholder5": " Descreva o tipo de candidato que estás em busca, levando em consideração a escolaridade, idade, morada, etc.",
+        "placeholder6": "Defina a carga horária que o candidato deverá cumprir. Seja específico."
     },
 
     "candidateButtons": {
@@ -159,7 +159,8 @@
         "label2": "Possuis Número da Segurança Social?",
         "option1": "Sim",
         "option2": "Não",
-        "submitButton":"Criar Perfil do Candidato"
+        "submitButton":"Criar Perfil do Candidato",
+        "alert": "Adicione uma foto ao seu perfil"
     },
 
     "changePassword": {

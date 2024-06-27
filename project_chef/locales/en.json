@@ -87,8 +87,8 @@
         "placeholder2": "Enter the company name",
         "placeholder3": "Write a brief description of the job, summarizing what the position is about. This will appear on the main page ad.",
         "placeholder4": "Describe the job you are offering and its responsibilities in detail. Aim for clarity and richness in details so that there are no doubts to the candidate.",
-        "placeholder5": " Describe the type of candidate you are looking for, taking into consideration education, gender, location, etc.",
-        "placeholder6": "Define the work hours the candidate will be required to fulfill."
+        "placeholder5": " Describe the type of candidate you are looking for, taking into consideration education, age, location, etc.",
+        "placeholder6": "Define the work hours the candidate will be required to fulfill. Be specific."
 
 
     },
@@ -163,7 +163,8 @@
         "label2": "Do you have a Social Security Number?",
         "option1": "Yes",
         "option2": "No",
-        "submitButton":"Create Candidate Profile"
+        "submitButton":"Create Candidate Profile",
+        "alert": "Add a picture to your profile"
     },
     
     "changePassword": {

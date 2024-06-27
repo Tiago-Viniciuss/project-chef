@@ -101,10 +101,14 @@ Form Login Profile
   }
 
   #container1 #insertPicture {
-    width: 150px;
-    height: 150px;
-    background-color: rgb(98, 98, 98);
     border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -35px;
+    left: 150px;
+    background-color: white;
+    padding: 5px;
+    border: 2px solid black;
   }
 
   #container1 #companyPicture {
@@ -266,10 +270,14 @@ Form Login Profile
   }
 
   #container1 #insertPicture {
-    width: 150px;
-    height: 150px;
-    background-color: rgb(83, 83, 83);
     border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+    top: 45px;
+    left: 115px;
+    background-color: white;
+    border: 2px solid black;
   }
 
   #container1 #companyPicture {

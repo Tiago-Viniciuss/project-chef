@@ -1,19 +1,19 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { useTranslation } from 'react-i18next';
 
-const firebaseConfig = {
+const firebaseConfig = { 
   apiKey: "AIzaSyDLeaVbkontIerNiMt_7SMiX8k3eMeS42o",
   authDomain: "projeto-empregos.firebaseapp.com",
   projectId: "projeto-empregos",
   storageBucket: "projeto-empregos.appspot.com",
   messagingSenderId: "640012785481",
   appId: "1:640012785481:web:8bd5e89d6ca63729666c98",
-  measurementId: "G-H63RS9DHMF"
+  measurementId: "G-H63RS9DHMF" 
 };
 
 const app = initializeApp(firebaseConfig);
@@ -26,12 +26,14 @@ const Home = () => {
   const [classChange, setClassChange] = useState('');
   const [activeCategory, setActiveCategory] = useState('');
 
+  const defaultImageURL = '/images/jobPicture.png'; // Caminho da imagem padrão
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         const normalizedKeyword = keyword.toLowerCase();
         let q;
-  
+
         if (keyword) {
           q = query(
             collection(db, 'Vagas'),
@@ -48,7 +50,7 @@ const Home = () => {
         } else {
           q = query(collection(db, 'Vagas'), orderBy('CreationDate', 'desc'));
         }
-  
+
         const querySnapshot = await getDocs(q);
         const jobsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setJobs(jobsData);
@@ -57,9 +59,10 @@ const Home = () => {
         alert('Erro ao buscar vagas de emprego: ' + error.message);
       }
     };
-  
+
     fetchJobs();
   }, [keyword, classChange]);
+
   const navigate = useNavigate();
 
   const handleApply = (jobId) => {
@@ -88,9 +91,6 @@ const Home = () => {
       <Header />
       <section id='homeIntro'>
         <p className='intro'>{t("home.intro")}</p>
-        {/*
-        <div id='homeBackground'></div>
-        */}
       </section>
       <section id='searchContainer'>
         <input
@@ -110,25 +110,24 @@ const Home = () => {
             >
               {t(`companyProfile.${category}`)}
             </button>
-          ))} <button className='btn buttonColor buttonAll' onClick={handleFilter}>{t('companyProfile.All')}</button>
+          ))}
+          <button className='btn buttonColor buttonAll' onClick={handleFilter}>{t('companyProfile.All')}</button>
         </section>
       </section>
       <section id='jobsSection'>
         <div className='jobContainer'>
           {jobs.map((job) => (
             <div key={job.id} className='jobBody'>
+              <img src={job.PhotoURL || defaultImageURL} alt={job.adTitle} /> {/* Verificação do URL da imagem */}
               <h3>{job.adTitle}</h3>
               <p>{job.companyName}</p>
               <hr />
-              <p className='description'>{job.smallDescription}</p>
-              <hr />
               <p>{job.workPlaceSelected}</p>
               <p>{job.jobTypeSelected}</p>
-              <p className='city'> {job.adCity}</p>
+              <p className='city'>{job.adCity}</p>
               <div className='buttons'>
                 <button className='btn btn-light' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
                 <button className='material-symbols-outlined'>bookmark</button>
-                {/*<button className='material-symbols-outlined' onClick={() => handleShare(job)}>share</button> */}
               </div>
             </div>
           ))}
