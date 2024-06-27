@@ -120,15 +120,12 @@ const Home = () => {
             <div key={job.id} className='jobBody'>
               <img src={job.PhotoURL || defaultImageURL} alt={job.adTitle} /> {/* Verificação do URL da imagem */}
               <h3>{job.adTitle}</h3>
-              <p>{job.companyName}</p>
+              <h4>{job.companyName}</h4>
               <hr />
               <p>{job.workPlaceSelected}</p>
               <p>{job.jobTypeSelected}</p>
               <p className='city'>{job.adCity}</p>
-              <div className='buttons'>
-                <button className='btn btn-light' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
-                <button className='material-symbols-outlined'>bookmark</button>
-              </div>
+                <button className='btn btn-light form-control' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
             </div>
           ))}
         </div>

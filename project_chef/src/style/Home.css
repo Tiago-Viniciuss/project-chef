@@ -311,62 +311,40 @@
 
   .jobContainer img {
     background-color: white;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
   }
 
   .jobBody {
     background-color:  rgb(41, 57, 107);
     color: white;
-    padding: 25px;
+    padding: 10px;
     width: 80%;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.363);
   }
 
-  .description {
-    width: 70%;
-    margin: auto;
-    font-size: 0.8em;
-    font-weight: 600;
-    text-align: justify;
+  .jobBody h3 {
+    font-size: 1.3em;
   }
 
-  .city {
-    font-size: 0.8em;
-    font-weight: 600;
+  .jobBody h4 {
+    font-size: 1em;
   }
 
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  .jobBody p {
+    font-size: 0.8em;
+    margin-bottom: 10px;
   }
 
   #applyButton {
-    width: 40%;
     font-size: 0.8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 600;
   }
 
-  .buttons .material-symbols-outlined {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    height: 26px;
-    width: 10px;
-    font-size: 1.7em;
-    border-radius: 0.375rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .buttons button:hover {
+  #applyButton:hover {
     background-color: #508CA4;
     color: white;
   }

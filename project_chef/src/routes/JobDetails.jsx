@@ -28,6 +28,8 @@ const JobDetails = () => {
   const [jobDetails, setJobDetails] = useState(null);
   const navigate = useNavigate();
 
+  const defaultImageURL = '/images/jobPicture.png';
+
   useEffect(() => {
     const fetchJobDetails = async () => {
       // Use o ID da vaga para recuperar os detalhes da vaga do Firebase
@@ -69,7 +71,8 @@ const JobDetails = () => {
           {t("jobDetails.backToList")}
         </span>
       </Link>
-      <h1>{jobDetails.adTitle}</h1>
+      <img src={jobDetails.PhotoURL || defaultImageURL} alt="" />
+      <h1 className='title'>{jobDetails.adTitle}</h1>
       <section id='jobDetailsHeader'>
         <ul>
           <li><span className='material-symbols-outlined'>calendar_today</span> {jobDetails.CreationDate}</li>
