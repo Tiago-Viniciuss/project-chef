@@ -30,6 +30,8 @@ const Home = () => {
 
   useEffect(() => {
     const fetchJobs = async () => {
+
+      window.scrollTo(0, 0)
       try {
         const normalizedKeyword = keyword.toLowerCase();
         let q;

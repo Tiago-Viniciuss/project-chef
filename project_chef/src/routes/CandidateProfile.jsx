@@ -202,7 +202,7 @@ const CandidateProfile = () => {
             placeholder={userData && userData.CandidateBirthday}
           />
           <input
-            type="text"
+            type="number"
             name="name"
             id="name"
             value={candidatePhone}

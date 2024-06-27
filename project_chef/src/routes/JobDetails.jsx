@@ -26,6 +26,7 @@ const JobDetails = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const [jobDetails, setJobDetails] = useState(null);
+  const [showPhoto, setShowPhoto] = useState('');
   const navigate = useNavigate();
 
   const defaultImageURL = '/images/jobPicture.png';
@@ -62,6 +63,14 @@ const JobDetails = () => {
 
   const candidateEmail = localStorage.getItem('candidateEmail');
 
+  const handlePhotoClick = (photoUrl) => {
+    setShowPhoto(photoUrl);
+  };
+
+  const closePhoto = () => {
+    setShowPhoto(false);
+  };
+
   return (
     <div id='jobDetails'>
       <Header />
@@ -71,7 +80,8 @@ const JobDetails = () => {
           {t("jobDetails.backToList")}
         </span>
       </Link>
-      <img src={jobDetails.PhotoURL || defaultImageURL} alt="" />
+      <img src={jobDetails.PhotoURL || defaultImageURL} alt=""  onClick={() => handlePhotoClick(jobDetails.PhotoURL)} 
+                style={{ cursor: 'pointer' }}  />
       <h1 className='title'>{jobDetails.adTitle}</h1>
       <section id='jobDetailsHeader'>
         <ul>
@@ -106,6 +116,13 @@ const JobDetails = () => {
           <button className='btn btn-dark' onClick={() => navigate('/candidate-profile-login')}>{t("jobDetails.loginButton")}</button>
         )}
       </section>
+      <div id='showCompanyPhoto' style={{ display: showPhoto ? 'flex' : 'none' }} onClick={closePhoto}>
+        {showPhoto && (
+          <div>
+            <img src={showPhoto} alt="Candidate" />
+          </div>
+        )}
+      </div>
       <Footer />
     </div>
   );
