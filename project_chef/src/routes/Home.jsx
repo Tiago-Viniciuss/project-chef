@@ -118,7 +118,8 @@ const Home = () => {
       </section>
       <section id='jobsSection'>
         <div className='jobContainer'>
-          {jobs.map((job) => (
+          {jobs.map((job, index) => (
+            <>
             <div key={job.id} className='jobBody'>
               <img src={job.PhotoURL || defaultImageURL} alt={job.adTitle} /> {/* Verificação do URL da imagem */}
               <h3>{job.adTitle}</h3>
@@ -129,6 +130,15 @@ const Home = () => {
               <p className='city'>{job.adCity}</p>
                 <button className='btn btn-light form-control' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
             </div>
+            {index > 0 && index % 6 === 5 && (
+              <div className='banner'>
+                {/* Conteúdo do banner aqui */}
+                <marquee direction="left">
+                  <p>Da Chef Experience</p>
+                </marquee>
+              </div>
+            )}
+          </>
           ))}
         </div>
       </section>
