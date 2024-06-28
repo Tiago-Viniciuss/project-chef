@@ -41,31 +41,11 @@ const Header = () => {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [hidden, setHidden] = useState(false);
 
-  /*useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop) {
-        // Rolar para baixo
-        setHidden(true);
-      } else {
-        // Rolar para cima
-        setHidden(false);
-      }
-      setLastScrollTop(scrollTop);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [lastScrollTop]);*/
-
+  
 
   return (
     <div>
-      <div id='headerContainer' /*className={`header ${hidden ? 'hidden' : ''}`}*/>
+      <div id='headerContainer'>
         <header id='header'>
           <button id='openMenu' className='material-symbols-outlined item' onClick={openMenu}>menu</button>
           <h1 id='brandTitle' className='item tangerine-regular'>
@@ -80,8 +60,10 @@ const Header = () => {
             <Link to={'/company-profile-login'}onClick={closeMenuNav}>{t("header.menuLink2")}</Link>
             <Link to={'/candidate-profile-login'} onClick={closeMenuNav}>{t("header.menuLink3")}</Link>
             <Link>{t("header.menuLink4")}</Link>
+            {/*
             <Link>{t("header.menuLink5")}</Link>
             <Link>{t("header.menuLink6")}</Link>
+            */}
           </div>
         </nav>
       </div>
