@@ -131,8 +131,7 @@ const CompanyPostedJobs = () => {
       <ul id='postedJobContainer'>
         {companyVagas.map((jobDetails) => (
           <li key={jobDetails.id} className='postedJob'>
-            <h1>{jobDetails.adTitle}</h1>
-            <button className='btn btn-success form-control' onClick={() => toggleEditForm(jobDetails.id)}>Editar Vaga</button>
+            <button onClick={() => toggleEditForm(jobDetails.id)}>{jobDetails.adTitle}</button>
             {activeEditForm === jobDetails.id && ( // Renderiza o formulário apenas se o id da vaga for igual ao formulário ativo
               <form id='editJob' onSubmit={(e) => { e.preventDefault(); handleSubmit(jobDetails.id); }}>
                 <div>
@@ -234,7 +233,7 @@ const CompanyPostedJobs = () => {
                 <button type="submit" className='btn btn-success'>Alterar Vaga</button>
               </form>
             )}
-            <button className='btn btn-danger form-control' id='deleteButton' onClick={() => openDeleteConfirmation(jobDetails.id)}>{t("myAds.deleteButton")}</button>
+            <button className='btn btn-danger' id='deleteButton' onClick={() => openDeleteConfirmation(jobDetails.id)}>{t("myAds.deleteButton")}</button>
           </li>
         ))}
       </ul>
