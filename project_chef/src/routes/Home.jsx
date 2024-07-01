@@ -128,7 +128,7 @@ const Home = () => {
                 <p>{job.jobTypeSelected}</p>
                 <p className='city'>{job.adCity}</p>
                 <p>Candidatos: {job.numApplications}</p>
-                <p>Candidaturas restantes: {job.applyLimit - job.numApplications}</p>
+                <p>Vagas restantes: {job.applyLimit - job.numApplications}</p>
                 <button className='btn btn-light form-control' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
               </div>
               {index > 0 && index % 6 === 5 && (
