@@ -25,6 +25,7 @@ const Home = () => {
   const [keyword, setKeyword] = useState('');
   const [classChange, setClassChange] = useState('');
   const [activeCategory, setActiveCategory] = useState('');
+  const [remainingJobs, setRemainingJobs] = useState(0);
 
   const defaultImageURL = '/images/jobPicture.png'; // Caminho da imagem padrão
 
@@ -42,6 +43,7 @@ const Home = () => {
             where('adTitleNormalized', '<=', normalizedKeyword + '\uf8ff'),
             orderBy('adTitleNormalized')
           );
+          setRemainingJobs()
         } else if (classChange) {
           q = query(
             collection(db, 'Vagas'),
@@ -127,8 +129,7 @@ const Home = () => {
                 <p>{job.workPlaceSelected}</p>
                 <p>{job.jobTypeSelected}</p>
                 <p className='city'>{job.adCity}</p>
-                <p>Candidatos: {job.numApplications}</p>
-                <p>Vagas restantes: {job.applyLimit - job.numApplications}</p>
+                <p>Candidaturas: {job.numApplications}</p>
                 <button className='btn btn-light form-control' id='applyButton' onClick={() => handleApply(job.id)}>{t("home.applyButton")}</button>
               </div>
               {index > 0 && index % 6 === 5 && (

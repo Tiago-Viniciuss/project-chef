@@ -91,6 +91,7 @@ const JobDetails = () => {
           <li><span className='material-symbols-outlined'>schedule</span> {jobDetails.jobTypeSelected}</li>
         </ul>
       </section>
+      <p>Ainda há {jobDetails.applyLimit - jobDetails.numApplications} vagas restantes</p>
       <section id='detailsComplement'>
         <div className='jobDescription'>
           <h4>{t("jobDetails.description")}</h4>

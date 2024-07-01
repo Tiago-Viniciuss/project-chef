@@ -23,6 +23,15 @@ h1 {
     align-items: center;
 }
 
+#warningMessage {
+    display: none;
+    color: red;
+}
+
+#warningMessage.active {
+    display: block;
+}
+
 #jobApply form {
     display: flex;
     flex-direction: column;

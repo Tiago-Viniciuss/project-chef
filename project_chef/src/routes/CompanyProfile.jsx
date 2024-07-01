@@ -148,7 +148,7 @@ const CompanyProfile = () => {
       CreationDate: currentDate,
       companyEmail: companyEmail,
       numApplications,
-      applyLimit: applyLimit
+      applyLimit: Number(applyLimit)
     };
 
     if (photoFile) {

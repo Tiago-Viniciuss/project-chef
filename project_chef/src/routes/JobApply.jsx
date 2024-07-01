@@ -29,10 +29,12 @@ const JobApply = () => {
     const navigate = useNavigate();
 
     const [jobDetails, setJobDetails] = useState(null);
+    const [remainingJobs, setRemainingJobs] = useState(0);
     const [candidateMail, setCandidateMail] = useState('');
     const [candidatePhone, setCandidatePhone] = useState('');
     const [userData, setUserData] = useState(null);
     const [candidateLetter, setCandidateLetter] = useState('Olá, estou a candidatar-me para esta vaga e aguardo vosso contacto!');
+    const [warning, setWarning] = useState('');
 
     const candidateEmail = localStorage.getItem('candidateEmail');
 
@@ -43,7 +45,9 @@ const JobApply = () => {
                     const docRef = doc(db, 'Vagas', id);
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
-                        setJobDetails(docSnap.data());
+                        const data = docSnap.data();
+                        setJobDetails(data);
+                        setRemainingJobs(data.applyLimit - data.numApplications);
                         window.scrollTo(0, 0);
                     } else {
                         console.log('Nenhuma vaga encontrada com o ID fornecido');
@@ -58,6 +62,18 @@ const JobApply = () => {
 
         fetchJobDetails();
     }, [jobApply, id]);
+
+    useEffect(() => {
+        if (remainingJobs === 0) {
+            const warningMessage = document.getElementById('warningMessage')
+            
+            setWarning('Esta empresa não aceita mais candidaturas');
+            warningMessage.classList.add('active')
+        } else {
+            setWarning('');
+            warningMessage.classList.remove('active')
+        }
+    }, [remainingJobs]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -100,7 +116,7 @@ const JobApply = () => {
         try {
             const usersCollectionRef = collection(db, 'Candidates Data');
             const appliersCollectionRef = collection(db, 'Appliers');
-            const vagasCollectionRef = collection(db, 'Vagas')
+            const vagasCollectionRef = collection(db, 'Vagas');
 
             await updateDoc(doc(usersCollectionRef, candidateEmail), {
                 CandidatePhone: candidatePhone,
@@ -167,6 +183,8 @@ const JobApply = () => {
                         <span className='material-symbols-outlined'>schedule</span> {jobDetails && jobDetails.jobTypeSelected}
                     </p>
                 </div>
+                <p>Vagas Restantes: {remainingJobs}</p>
+                <p id='warningMessage'>{warning}</p>
             </section>
             <form onSubmit={applyToJob}>
                 <h5>{t('applyJob.personalData')}</h5>
@@ -181,7 +199,7 @@ const JobApply = () => {
                 <textarea name="candidateLetter" id="candidateLetter" cols="30" rows="10" className='form-control' onChange={handleCandidateLetter} value={candidateLetter}></textarea>
                 <p>{t('applyJob.info1')}</p>
                 <p>{t('applyJob.info2')}</p>
-                <button type='submit' className='btn btn-dark'>{t('applyJob.button1')}</button>
+                <button type='submit' className='btn btn-dark' disabled={remainingJobs === 0}>{t('applyJob.button1')}</button>
             </form>
             <Footer />
         </div>
