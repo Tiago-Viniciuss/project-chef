@@ -25,6 +25,7 @@ const CompanyPostedJobs = () => {
   const [deleteConfirmation, setDeleteConfirmation] = useState(null);
   const [companyVagas, setCompanyVagas] = useState([]);
   const [formState, setFormState] = useState({});
+  const [activeEditForm, setActiveEditForm] = useState(null); // Estado para controlar qual formulário está ativo
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -110,13 +111,17 @@ const CompanyPostedJobs = () => {
         description: jobDescription,
         jobTypeSelected,
         jobTypeDescription: workLoad,
-        profile: profile
+        profile,
         // adicione outros campos aqui
       });
       console.log('Dados atualizados com sucesso!');
     } catch (error) {
       console.error('Erro ao atualizar dados:', error);
     }
+  };
+
+  const toggleEditForm = (id) => {
+    setActiveEditForm(activeEditForm === id ? null : id); // Alterna o estado do formulário ativo
   };
 
   return (
@@ -126,93 +131,110 @@ const CompanyPostedJobs = () => {
       <ul id='postedJobContainer'>
         {companyVagas.map((jobDetails) => (
           <li key={jobDetails.id} className='postedJob'>
-            <form className='form-control' onSubmit={(e) => { e.preventDefault(); handleSubmit(jobDetails.id); }}>
-              <label htmlFor="adTitle">Título do Anúncio:</label>
-              <input
-                type="text"
-                value={formState[jobDetails.id]?.adTitle || ''}
-                onChange={(e) => handleInputChange(jobDetails.id, 'adTitle', e.target.value)}
-              />
-              <label htmlFor="adCity">Local:</label>
-              <input
-                type="text"
-                value={formState[jobDetails.id]?.adCity || ''}
-                onChange={(e) => handleInputChange(jobDetails.id, 'adCity', e.target.value)}
-              />
-              <label htmlFor="jobSalary">Salário:</label>
-              <select
-                name="jobSalary"
-                id="jobSalary"
-                className='form-control'
-                value={formState[jobDetails.id]?.jobSalary || ''}
-                onChange={(e) => handleInputChange(jobDetails.id, 'jobSalary', e.target.value)}
-                required
-              >
-                <optgroup>
-                  <option value="" disabled>-- {t("companyProfile.chooseSalary")} --</option>
-                  <option value={t("companyProfile.salary1")}>{t("companyProfile.salary1")}</option>
-                  <option value={t("companyProfile.salary2")}>{t("companyProfile.salary2")}</option>
-                  <option value={t("companyProfile.salary3")}>{t("companyProfile.salary3")}</option>
-                  <option value={t("companyProfile.salary4")}>{t("companyProfile.salary4")}</option>
-                  <option value={t("companyProfile.salary5")}>{t("companyProfile.salary5")}</option>
-                  <option value={t("companyProfile.salary6")}>{t("companyProfile.salary6")}</option>
-                  <option value={t("companyProfile.salary7")}>{t("companyProfile.salary7")}</option>
-                  <option value={t("companyProfile.salary8")}>{t("companyProfile.salary8")}</option>
-                  <option value={t("companyProfile.salary9")}>{t("companyProfile.salary9")}</option>
-                </optgroup>
-              </select>
-              <label htmlFor="jobDescription">Descrição da Vaga:</label>
-              <textarea
-                cols="45" rows="6"
-                value={formState[jobDetails.id]?.jobDescription || ''}
-                onChange={(e) => handleInputChange(jobDetails.id, 'jobDescription', e.target.value)}
-              />
-              <label htmlFor="profile">Perfil Buscado:</label>
-              <textarea
-                cols="45" rows="6"
-                value={formState[jobDetails.id]?.profile || ''}
-                onChange={(e) => handleInputChange(jobDetails.id, 'profile', e.target.value)}
-              />
-              <legend>{t("companyProfile.label7")}</legend>
-              <fieldset id='jobsType' className='form-control'>
-                <label>
-                  <input
-                    type="checkbox"
-                    name="type"
-                    value="Full-Time"
-                    checked={formState[jobDetails.id]?.jobTypeSelected === 'Full-Time'}
-                    onChange={() => handleJobTypeChange(jobDetails.id, 'Full-Time')}
-                  /> Full-Time
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    name="type"
-                    value="Part-Time"
-                    checked={formState[jobDetails.id]?.jobTypeSelected === 'Part-Time'}
-                    onChange={() => handleJobTypeChange(jobDetails.id, 'Part-Time')}
-                  /> Part-Time
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    name="type"
-                    value="Estágio"
-                    checked={formState[jobDetails.id]?.jobTypeSelected === 'Estágio'}
-                    onChange={() => handleJobTypeChange(jobDetails.id, 'Estágio')}
-                  /> {t("companyProfile.workLoad3")}
-                </label>
-              </fieldset>
-              <label htmlFor="applyLimit">Limite de Candidaturas:</label>
-              <input
-                type="number"
-                value={formState[jobDetails.id]?.applyLimit || ''}
-                onChange={(e) => handleInputChange(jobDetails.id, 'applyLimit', e.target.value)}
-              />
-              {/* Adicione outros campos aqui */}
-              <button type="submit" className='btn btn-success'>Alterar</button>
-            </form>
-            <button className='btn btn-danger' onClick={() => openDeleteConfirmation(jobDetails.id)}>{t("myAds.deleteButton")}</button>
+            <h1>{jobDetails.adTitle}</h1>
+            <button className='btn btn-success form-control' onClick={() => toggleEditForm(jobDetails.id)}>Editar Vaga</button>
+            {activeEditForm === jobDetails.id && ( // Renderiza o formulário apenas se o id da vaga for igual ao formulário ativo
+              <form id='editJob' onSubmit={(e) => { e.preventDefault(); handleSubmit(jobDetails.id); }}>
+                <div>
+                  <label htmlFor="adTitle">Título do Anúncio:</label>
+                  <input className='form-control'
+                    type="text"
+                    value={formState[jobDetails.id]?.adTitle || ''}
+                    onChange={(e) => handleInputChange(jobDetails.id, 'adTitle', e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="adCity">Local:</label>
+                  <input className='form-control'
+                    type="text"
+                    value={formState[jobDetails.id]?.adCity || ''}
+                    onChange={(e) => handleInputChange(jobDetails.id, 'adCity', e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="jobDescription">Descrição da Vaga:</label>
+                  <textarea className='form-control'
+                    cols="45" rows="6"
+                    value={formState[jobDetails.id]?.jobDescription || ''}
+                    onChange={(e) => handleInputChange(jobDetails.id, 'jobDescription', e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="profile">Perfil Buscado:</label>
+                  <textarea className='form-control'
+                    cols="45" rows="6"
+                    value={formState[jobDetails.id]?.profile || ''}
+                    onChange={(e) => handleInputChange(jobDetails.id, 'profile', e.target.value)}
+                  />
+                </div>
+                <div>
+                  <legend>{t("companyProfile.label7")}</legend>
+                  <fieldset id='jobsType' className='form-control'>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="type"
+                        value="Full-Time"
+                        checked={formState[jobDetails.id]?.jobTypeSelected === 'Full-Time'}
+                        onChange={() => handleJobTypeChange(jobDetails.id, 'Full-Time')}
+                      /> Full-Time
+                    </label>
+                    <label>
+                      <input 
+                        type="checkbox"
+                        name="type"
+                        value="Part-Time"
+                        checked={formState[jobDetails.id]?.jobTypeSelected === 'Part-Time'}
+                        onChange={() => handleJobTypeChange(jobDetails.id, 'Part-Time')}
+                      /> Part-Time
+                    </label>
+                    <label>
+                      <input 
+                        type="checkbox"
+                        name="type"
+                        value="Estágio"
+                        checked={formState[jobDetails.id]?.jobTypeSelected === 'Estágio'}
+                        onChange={() => handleJobTypeChange(jobDetails.id, 'Estágio')}
+                      /> {t("companyProfile.workLoad3")}
+                    </label>
+                  </fieldset>
+                </div>
+                <div>
+                  <label htmlFor="jobSalary">Salário:</label>
+                  <select
+                    name="jobSalary"
+                    id="jobSalary"
+                    className='form-control'
+                    value={formState[jobDetails.id]?.jobSalary || ''}
+                    onChange={(e) => handleInputChange(jobDetails.id, 'jobSalary', e.target.value)}
+                    required
+                  >
+                    <optgroup>
+                      <option value="" disabled>-- {t("companyProfile.chooseSalary")} --</option>
+                      <option value={t("companyProfile.salary1")}>{t("companyProfile.salary1")}</option>
+                      <option value={t("companyProfile.salary2")}>{t("companyProfile.salary2")}</option>
+                      <option value={t("companyProfile.salary3")}>{t("companyProfile.salary3")}</option>
+                      <option value={t("companyProfile.salary4")}>{t("companyProfile.salary4")}</option>
+                      <option value={t("companyProfile.salary5")}>{t("companyProfile.salary5")}</option>
+                      <option value={t("companyProfile.salary6")}>{t("companyProfile.salary6")}</option>
+                      <option value={t("companyProfile.salary7")}>{t("companyProfile.salary7")}</option>
+                      <option value={t("companyProfile.salary8")}>{t("companyProfile.salary8")}</option>
+                      <option value={t("companyProfile.salary9")}>{t("companyProfile.salary9")}</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="applyLimit">Limite de Candidaturas:</label>
+                  <input className='form-control'
+                    type="number"
+                    value={formState[jobDetails.id]?.applyLimit || ''}
+                    onChange={(e) => handleInputChange(jobDetails.id, 'applyLimit', e.target.value)}
+                  />
+                </div>
+                <button type="submit" className='btn btn-success'>Alterar Vaga</button>
+              </form>
+            )}
+            <button className='btn btn-danger form-control' id='deleteButton' onClick={() => openDeleteConfirmation(jobDetails.id)}>{t("myAds.deleteButton")}</button>
           </li>
         ))}
       </ul>

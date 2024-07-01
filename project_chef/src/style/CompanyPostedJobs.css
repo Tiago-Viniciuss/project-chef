@@ -6,8 +6,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 25px;
-    padding: 15px;
     margin-top: 50px;
 }
 
@@ -16,6 +16,16 @@
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.363);
+    width: 320px;
+}
+
+.postedJob h1 {
+    font-size: 1.2em;
+    margin: 20px;
+}
+
+#deleteButton {
+    margin-top: 15px;
 }
 
 .confirmationDialog {
@@ -31,6 +41,31 @@
 .confirmationDialog button {
     width: 30%;
     margin: 5px;
+}
+
+form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form #jobSalary {
+    margin-bottom: 0px;
+}
+
+form #jobsType {
+    display: flex;
+    flex-direction: column;
+}
+
+#editJob.active {
+    display: flex;
 }
 
 
