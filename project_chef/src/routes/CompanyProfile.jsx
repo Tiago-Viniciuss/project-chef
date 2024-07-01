@@ -33,6 +33,7 @@ const CompanyProfile = () => {
     setWorkPlaceSelected(event.target.value);
   };
 
+
   const [jobTypeSelected, setJobTypeSelected] = useState('');
   const handleJobTypeChange = (event) => {
     setJobTypeSelected(event.target.value);
@@ -54,6 +55,8 @@ const CompanyProfile = () => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [descriptionn, setDescriptionn] = useState('');
+  const [numApplications, setNumApplications] = useState(0);
+  const [applyLimit, setApplyLimit ] = useState(20)
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -66,6 +69,10 @@ const CompanyProfile = () => {
   const handleDescription = (e) => {
     setDescriptionn(e.target.value);
   };
+
+  const handleApplyLimit = (e) => {
+    setApplyLimit(e.target.value)
+  }
 
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
@@ -140,6 +147,8 @@ const CompanyProfile = () => {
       smallDescription,
       CreationDate: currentDate,
       companyEmail: companyEmail,
+      numApplications,
+      applyLimit: applyLimit
     };
 
     if (photoFile) {
@@ -171,6 +180,7 @@ const CompanyProfile = () => {
             setJobSalary('');
             setSmallDescription('');
             setPhotoFile(null);
+            setApplyLimit('')
             alert(t("alerts.adPostSuccessfully"));
           } catch (error) {
             console.error('Erro ao adicionar vaga de emprego:', error);
@@ -310,6 +320,10 @@ const CompanyProfile = () => {
                 <option value={t("companyProfile.salary9")}>{t("companyProfile.salary9")}</option>
               </optgroup>
             </select>
+          </div>
+          <div>
+            <p>Defina o limite de candidaturas:</p>
+            <input value={applyLimit} onChange={handleApplyLimit} type="number" name="applyLimit" id="applyLimit" className='form-control'/>
           </div>
           <input type="submit" value={t("companyProfile.publishButton")} className='btn btn-dark form-control' />
         </form>

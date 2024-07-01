@@ -28,15 +28,15 @@ const Appliers = () => {
         return;
       }
 
-      const conversationsCollection = collection(db, 'Conversations');
+      const appliersCollection = collection(db, 'Appliers');
       const q = query(
-        conversationsCollection, 
+        appliersCollection, 
         where('CompanyEmail', '==', companyEmail),
         orderBy('Timestamp', 'desc')
       );
 
-      const conversationsSnapshot = await getDocs(q);
-      const appliersList = conversationsSnapshot.docs.map(doc => ({
+      const appliersSnapshot = await getDocs(q);
+      const appliersList = appliersSnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
@@ -60,7 +60,7 @@ const Appliers = () => {
 
   const deleteCandidate = async (id) => {
     try {
-      await deleteDoc(doc(db, 'Conversations', id));
+      await deleteDoc(doc(db, 'Appliers', id));
       setAppliers(appliers.filter((applier) => applier.id !== id));
       console.log('Conversa deletada com sucesso!');
     } catch (error) {
@@ -72,6 +72,7 @@ const Appliers = () => {
     <div>
       <h1 id='appliersTitle'>Minhas Conversas</h1>
       <section id='appliersContainer'>
+        <p>Número de Candidatos: <strong>{appliers.length}</strong></p>
         {appliers.length > 0 ? (
           appliers.map(applier => (
             <div key={applier.id} className="applier">

@@ -99,13 +99,18 @@ const JobApply = () => {
 
         try {
             const usersCollectionRef = collection(db, 'Candidates Data');
-            const conversationsCollectionRef = collection(db, 'Conversations');
+            const appliersCollectionRef = collection(db, 'Appliers');
+            const vagasCollectionRef = collection(db, 'Vagas')
 
             await updateDoc(doc(usersCollectionRef, candidateEmail), {
                 CandidatePhone: candidatePhone,
             });
 
-            await addDoc(conversationsCollectionRef, {
+            await updateDoc(doc(vagasCollectionRef, id), {
+                numApplications: jobDetails.numApplications + 1
+            });
+
+            await addDoc(appliersCollectionRef, {
                 JobTitle: jobDetails.adTitle,
                 Name: userData.CandidateName,
                 Message: candidateLetter,
