@@ -125,15 +125,15 @@ const CompanyPostedJobs = () => {
   };
 
   return (
-    <div>
+    <div id='postedJobsContainer'>
       <Header />
       <h1 className='postedJobTitle'>{t("myAds.title")}</h1>
       <ul id='postedJobContainer'>
         {companyVagas.map((jobDetails) => (
           <li key={jobDetails.id} className='postedJob'>
-            <button onClick={() => toggleEditForm(jobDetails.id)}>{jobDetails.adTitle}</button>
+            <button className='btn btn-dark' id='editFormButton' onClick={() => toggleEditForm(jobDetails.id)}>{jobDetails.adTitle}</button>
             {activeEditForm === jobDetails.id && ( // Renderiza o formulário apenas se o id da vaga for igual ao formulário ativo
-              <form id='editJob' onSubmit={(e) => { e.preventDefault(); handleSubmit(jobDetails.id); }}>
+              <form id='editJob' onSubmit={(e) => { e.preventDefault(); handleSubmit(jobDetails.id); alert('Alterado com sucesso!')}}>
                 <div>
                   <label htmlFor="adTitle">Título do Anúncio:</label>
                   <input className='form-control'
@@ -223,7 +223,7 @@ const CompanyPostedJobs = () => {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="applyLimit">Limite de Candidaturas:</label>
+                  <label htmlFor="applyLimit">Defina o limite de Candidaturas:</label>
                   <input className='form-control'
                     type="number"
                     value={formState[jobDetails.id]?.applyLimit || ''}
